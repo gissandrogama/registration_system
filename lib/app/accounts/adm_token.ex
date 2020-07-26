@@ -1,4 +1,7 @@
 defmodule App.Accounts.AdmToken do
+  @moduledoc """
+  function that generates and verifies the token
+  """
   use Ecto.Schema
   import Ecto.Query
 

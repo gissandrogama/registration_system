@@ -1,4 +1,7 @@
 defmodule App.Accounts.Adm do
+  @moduledoc """
+  functions that create users
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

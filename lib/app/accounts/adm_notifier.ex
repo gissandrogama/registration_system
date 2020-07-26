@@ -1,4 +1,7 @@
 defmodule App.Accounts.AdmNotifier do
+  @moduledoc """
+  notification of confirma confirmation
+  """
   # For simplicity, this module simply logs messages to the terminal.
   # You should replace it by a proper e-mail or notification tool, such as:
   #

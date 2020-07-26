@@ -5,7 +5,7 @@ defmodule App.Accounts do
 
   import Ecto.Query, warn: false
   alias App.Repo
-  alias App.Accounts.{Adm, AdmToken, AdmNotifier}
+  alias App.Accounts.{Adm, AdmNotifier, AdmToken}
 
   ## Database getters
 

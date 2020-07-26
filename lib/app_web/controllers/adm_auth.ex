@@ -1,4 +1,7 @@
 defmodule AppWeb.AdmAuth do
+  @moduledoc """
+  that authentication and session functions
+  """
   import Plug.Conn
   import Phoenix.Controller
 
