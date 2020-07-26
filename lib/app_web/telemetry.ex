@@ -1,4 +1,7 @@
 defmodule AppWeb.Telemetry do
+  @moduledoc """
+  Telemetry is a dynamic dispatching library for metrics and instrumentations.
+  """
   use Supervisor
   import Telemetry.Metrics
 
