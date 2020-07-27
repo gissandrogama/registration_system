@@ -4,6 +4,7 @@ defmodule App.AccountsFixtures do
   entities via the `App.Accounts` context.
   """
 
+  def unique_name, do: "adm#{System.unique_integer()}"
   def unique_adm_email, do: "adm#{System.unique_integer()}@example.com"
   def valid_adm_password, do: "hello world!"
 
@@ -11,6 +12,7 @@ defmodule App.AccountsFixtures do
     {:ok, adm} =
       attrs
       |> Enum.into(%{
+        name: unique_name(),
         email: unique_adm_email(),
         password: valid_adm_password()
       })

@@ -21,11 +21,12 @@ defmodule AppWeb.AdmRegistrationControllerTest do
   describe "POST /admins/register" do
     @tag :capture_log
     test "creates account and logs the adm in", %{conn: conn} do
+      name = unique_name()
       email = unique_adm_email()
 
       conn =
         post(conn, Routes.adm_registration_path(conn, :create), %{
-          "adm" => %{"email" => email, "password" => valid_adm_password()}
+          "adm" => %{"name" => name, "email" => email, "password" => valid_adm_password()}
         })
 
       assert get_session(conn, :adm_token)

@@ -84,8 +84,10 @@ defmodule App.AccountsTest do
     end
 
     test "registers admins with a hashed password" do
+      name = unique_name()
       email = unique_adm_email()
-      {:ok, adm} = Accounts.register_adm(%{email: email, password: valid_adm_password()})
+      {:ok, adm} = Accounts.register_adm(%{name: name, email: email, password: valid_adm_password()})
+      assert adm.name == name
       assert adm.email == email
       assert is_binary(adm.hashed_password)
       assert is_nil(adm.confirmed_at)
