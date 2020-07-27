@@ -1,3 +1,5 @@
+<div class="bg-gray-200 min-h-screen p-8 flex items-center justify-center" >
+
 <h1>Log in</h1>
 
 <%= form_for @conn, Routes.adm_session_path(@conn, :create), [as: :adm], fn f -> %>
@@ -25,3 +27,4 @@
   <%= link "Register", to: Routes.adm_registration_path(@conn, :new) %> |
   <%= link "Forgot your password?", to: Routes.adm_reset_password_path(@conn, :new) %>
 </p>
+</div>
