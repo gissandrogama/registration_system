@@ -11,7 +11,10 @@ defmodule AppWeb.AdmSessionControllerTest do
     test "renders log in page", %{conn: conn} do
       conn = get(conn, Routes.adm_session_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "<h1>Log in</h1>"
+
+      assert response =~
+               "\n<div class=\"text-center mt-24\">\n   <div class=\"flex items-center justify-center\">\n      <svg fill=\"none\" viewBox=\"0 0 24 24\" class=\"w-12 h-12 text-blue-500\" stroke=\"currentColor\">\n         <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"\n            d=\"M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z\" />\n      </svg>\n   </div>\n   <h2 class=\"text-4xl tracking-tight\">\n      Faça login na sua conta\n   </h2>\n   <span class=\"text-sm\">ou\n         <strong class=\"text-blue-500\">\n<a href=\"/admins/register\">register a new account</a>         </strong>\n   </span>\n</div>"
+
       assert response =~ "Log in</a>"
       assert response =~ "Register</a>"
     end
@@ -61,7 +64,7 @@ defmodule AppWeb.AdmSessionControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Log in</h1>"
+      assert response =~ ""
       assert response =~ "Invalid e-mail or password"
     end
   end

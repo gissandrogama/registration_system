@@ -43,13 +43,13 @@ defmodule AppWeb.AdmRegistrationControllerTest do
     test "render errors for invalid data", %{conn: conn} do
       conn =
         post(conn, Routes.adm_registration_path(conn, :create), %{
-          "adm" => %{"email" => "with spaces", "password" => "too short"}
+          "adm" => %{"email" => "with spaces", "password" => "too"}
         })
 
       response = html_response(conn, 200)
       assert response =~ "<h1>Register</h1>"
       assert response =~ "must have the @ sign and no spaces"
-      assert response =~ "should be at least 12 character"
+      assert response =~ "should be at least 6 character"
     end
   end
 end

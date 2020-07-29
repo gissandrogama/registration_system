@@ -42,14 +42,14 @@ defmodule AppWeb.AdmSettingsControllerTest do
         put(conn, Routes.adm_settings_path(conn, :update_password), %{
           "current_password" => "invalid",
           "adm" => %{
-            "password" => "too short",
+            "password" => "too",
             "password_confirmation" => "does not match"
           }
         })
 
       response = html_response(old_password_conn, 200)
       assert response =~ "<h1>Settings</h1>"
-      assert response =~ "should be at least 12 character(s)"
+      assert response =~ "should be at least 6 character(s)"
       assert response =~ "does not match password"
       assert response =~ "is not valid"
 

@@ -58,11 +58,11 @@ defmodule App.AccountsTest do
     end
 
     test "validates email and password when given" do
-      {:error, changeset} = Accounts.register_adm(%{email: "not valid", password: "not valid"})
+      {:error, changeset} = Accounts.register_adm(%{email: "not valid", password: "not"})
 
       assert %{
                email: ["must have the @ sign and no spaces"],
-               password: ["should be at least 12 character(s)"]
+               password: ["should be at least 6 character(s)"]
              } = errors_on(changeset)
     end
 
@@ -86,7 +86,10 @@ defmodule App.AccountsTest do
     test "registers admins with a hashed password" do
       name = unique_name()
       email = unique_adm_email()
-      {:ok, adm} = Accounts.register_adm(%{name: name, email: email, password: valid_adm_password()})
+
+      {:ok, adm} =
+        Accounts.register_adm(%{name: name, email: email, password: valid_adm_password()})
+
       assert adm.name == name
       assert adm.email == email
       assert is_binary(adm.hashed_password)
@@ -138,15 +141,13 @@ defmodule App.AccountsTest do
     test "validates e-mail uniqueness", %{adm: adm} do
       %{email: email} = adm_fixture()
 
-      {:error, changeset} =
-        Accounts.apply_adm_email(adm, valid_adm_password(), %{email: email})
+      {:error, changeset} = Accounts.apply_adm_email(adm, valid_adm_password(), %{email: email})
 
       assert "has already been taken" in errors_on(changeset).email
     end
 
     test "validates current password", %{adm: adm} do
-      {:error, changeset} =
-        Accounts.apply_adm_email(adm, "invalid", %{email: unique_adm_email()})
+      {:error, changeset} = Accounts.apply_adm_email(adm, "invalid", %{email: unique_adm_email()})
 
       assert %{current_password: ["is not valid"]} = errors_on(changeset)
     end
@@ -236,12 +237,12 @@ defmodule App.AccountsTest do
     test "validates password", %{adm: adm} do
       {:error, changeset} =
         Accounts.update_adm_password(adm, valid_adm_password(), %{
-          password: "not valid",
+          password: "not",
           password_confirmation: "another"
         })
 
       assert %{
-               password: ["should be at least 12 character(s)"],
+               password: ["should be at least 6 character(s)"],
                password_confirmation: ["does not match password"]
              } = errors_on(changeset)
     end
@@ -445,12 +446,12 @@ defmodule App.AccountsTest do
     test "validates password", %{adm: adm} do
       {:error, changeset} =
         Accounts.reset_adm_password(adm, %{
-          password: "not valid",
+          password: "not",
           password_confirmation: "another"
         })
 
       assert %{
-               password: ["should be at least 12 character(s)"],
+               password: ["should be at least 6 character(s)"],
                password_confirmation: ["does not match password"]
              } = errors_on(changeset)
     end
