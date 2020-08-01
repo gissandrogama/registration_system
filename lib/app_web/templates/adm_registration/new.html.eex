@@ -1,8 +1,8 @@
 <div class="text-center mt-24">
   <h1 class="text-4xl tracking-tight">Registro de Administradores</h1>
-  <p>
-    <%= link "Log in", to: Routes.adm_session_path(@conn, :new) %> |
-    <%= link "Forgot your password?", to: Routes.adm_reset_password_path(@conn, :new) %>
+  <p class="text-blue-500">
+    <%= link "Acessar", to: Routes.adm_session_path(@conn, :new) %> |
+    <%= link "Esqueceu sua senha?", to: Routes.adm_reset_password_path(@conn, :new) %>
   </p>
 </div>
 <div class="flex justify-center my-2 mx-4 md:mx-0">
@@ -30,7 +30,7 @@
   </div>
 
   <div class="w-full md:w-full px-3 mb-6">
-    <%= label f, :password, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= label f, :password, "Senha", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
     <%= password_input f, :password, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :password %>
