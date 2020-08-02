@@ -3,6 +3,7 @@ defmodule App.Elections.Leader do
   import Ecto.Changeset
 
   schema "name" do
+    field :name, :string
     field :bairro, :string
     field :cadsus, :string
     field :cecao, :string
@@ -21,6 +22,7 @@ defmodule App.Elections.Leader do
   def changeset(leader, attrs) do
     leader
     |> cast(attrs, [
+      :name,
       :telefone,
       :endereco,
       :bairro,
@@ -33,6 +35,7 @@ defmodule App.Elections.Leader do
       :nm_mae
     ])
     |> validate_required([
+      :name,
       :telefone,
       :endereco,
       :bairro,

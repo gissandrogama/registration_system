@@ -48,8 +48,7 @@ defmodule App.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:phx_gen_auth, "~> 0.4.0", only: [:dev], runtime: false},
-      {:pdf_generator, ">=0.6.0"}
+      {:phx_gen_auth, "~> 0.4.0", only: [:dev], runtime: false}
     ]
   end
 

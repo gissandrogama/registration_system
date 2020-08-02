@@ -3,6 +3,7 @@ defmodule App.Repo.Migrations.CreateName do
 
   def change do
     create table(:name) do
+      add :name, :string
       add :telefone, :string
       add :endereco, :string
       add :bairro, :string

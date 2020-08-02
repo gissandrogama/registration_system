@@ -1,51 +1,101 @@
-<%= form_for @changeset, @action, fn f -> %>
+<div class="flex justify-center my-2 mx-4 md:mx-0">
+  <%= form_for @changeset, @action, [class: "w-full max-w-xl bg-white rounded-lg shadow-md p-6"], fn f -> %>
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
   <% end %>
 
-  <%= label f, :telefone %>
-  <%= text_input f, :telefone %>
-  <%= error_tag f, :telefone %>
-
-  <%= label f, :endereco %>
-  <%= text_input f, :endereco %>
-  <%= error_tag f, :endereco %>
-
-  <%= label f, :bairro %>
-  <%= text_input f, :bairro %>
-  <%= error_tag f, :bairro %>
-
-  <%= label f, :cidade %>
-  <%= text_input f, :cidade %>
-  <%= error_tag f, :cidade %>
-
-  <%= label f, :zona %>
-  <%= text_input f, :zona %>
-  <%= error_tag f, :zona %>
-
-  <%= label f, :cecao %>
-  <%= text_input f, :cecao %>
-  <%= error_tag f, :cecao %>
-
-  <%= label f, :cpf %>
-  <%= text_input f, :cpf %>
-  <%= error_tag f, :cpf %>
-
-  <%= label f, :rg %>
-  <%= text_input f, :rg %>
-  <%= error_tag f, :rg %>
-
-  <%= label f, :cadsus %>
-  <%= text_input f, :cadsus %>
-  <%= error_tag f, :cadsus %>
-
-  <%= label f, :nm_mae %>
-  <%= text_input f, :nm_mae %>
-  <%= error_tag f, :nm_mae %>
-
-  <div>
-    <%= submit "Save" %>
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :name, "nome", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :name, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :name %>
+    </span>
   </div>
-<% end %>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :telefone, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :telefone, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :telefone %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :endereco, "Endereço", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :endereco, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :endereco %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :bairro, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :bairro, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :bairro %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :cidade, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :cidade, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :cidade %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :zona, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :zona, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :zona %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :cecao, "Sessão", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :cecao, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :cecao %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :cpf, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :cpf, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :cpf %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :rg, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :rg, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :rg %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :cadsus, "Cartão do Sus", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :cadsus, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :cadsus %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :nm_mae, "Nome da Mãe", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :nm_mae, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :nm_mae %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= submit "Save", [class: "appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500"] %>
+  </div>
+  <% end %>
+</div>
