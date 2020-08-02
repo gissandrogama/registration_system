@@ -62,6 +62,7 @@ defmodule AppWeb.Router do
     pipe_through [:browser, :require_authenticated_adm]
 
     get "/admins/settings", AdmSettingsController, :edit
+    get "/admins/panel", AdmPanelController, :new
     put "/admins/settings/update_password", AdmSettingsController, :update_password
     put "/admins/settings/update_email", AdmSettingsController, :update_email
     get "/admins/settings/confirm_email/:token", AdmSettingsController, :confirm_email
