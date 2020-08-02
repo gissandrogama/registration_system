@@ -1,0 +1,44 @@
+<h1>Listing Name</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Telefone</th>
+      <th>Endereco</th>
+      <th>Bairro</th>
+      <th>Cidade</th>
+      <th>Zona</th>
+      <th>Cecao</th>
+      <th>Cpf</th>
+      <th>Rg</th>
+      <th>Cadsus</th>
+      <th>Nm mae</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for leader <- @name do %>
+    <tr>
+      <td><%= leader.telefone %></td>
+      <td><%= leader.endereco %></td>
+      <td><%= leader.bairro %></td>
+      <td><%= leader.cidade %></td>
+      <td><%= leader.zona %></td>
+      <td><%= leader.cecao %></td>
+      <td><%= leader.cpf %></td>
+      <td><%= leader.rg %></td>
+      <td><%= leader.cadsus %></td>
+      <td><%= leader.nm_mae %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.leader_path(@conn, :show, leader) %></span>
+        <span><%= link "Edit", to: Routes.leader_path(@conn, :edit, leader) %></span>
+        <span><%= link "Delete", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Leader", to: Routes.leader_path(@conn, :new) %></span>

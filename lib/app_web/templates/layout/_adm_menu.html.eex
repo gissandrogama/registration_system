@@ -1,10 +1,66 @@
-<ul>
+<div class="ml-10 flex items-baseline">
 <%= if @current_adm do %>
-  <li><%= @current_adm.email %></li>
-  <li><%= link "Settings", to: Routes.adm_settings_path(@conn, :edit) %></li>
-  <li><%= link "Log out", to: Routes.adm_session_path(@conn, :delete), method: :delete %></li>
+  <%= link "Início", to: Routes.page_path(@conn, :index) , class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"%>
+    <%= live_patch("Lideres",
+    to: Routes.team_path(@conn, :index),
+    class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700")
+    %>
+  <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
+    </div>
+              </div>
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-4 flex items-center md:ml-6">
+                <button class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
+                        aria-label="Notifications">
+                  <svg class="h-6 w-6"
+                       stroke="currentColor"
+                       fill="none"
+                       viewBox="0 0 24 24">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                </button>
+                <!-- Profile dropdown -->
+                <div class="ml-3 relative"
+                     x-data=" { open: false }">
+                  <div>
+                    <button class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
+                            id="user-menu"
+                            aria-label="User menu"
+                            aria-haspopup="true"
+                            @click="open = !open">
+                      <img class="h-8 w-8 rounded-full" src="https://pbs.twimg.com/profile_images/1261681328686338049/QyXVbPmS_400x400.jpg" alt="" />
+                    </button>
+                  </div>
+                  <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+                       x-show="open"
+                       x-cloak
+                       x-transition:enter="transition ease-out duration-100"
+                       x-transition:enter-start="transform opacity-0 scale-95"
+                       x-transition:enter-end="transform opacity-100 scale-100"
+                       x-transition:leave="transition ease-in duration-75"
+                       x-transition:leave-start="transform opacity-100 scale-100"
+                       x-transition:leave-end="transform opacity-0 scale-95">
+                    <div class=" py-1 rounded-md bg-white shadow-xs"
+                         role="menu"
+                         aria-orientation="vertical"
+                         aria-labelledby="user-menu">
+                      <%= if @current_adm do %>
+                      <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><%= @current_adm.name %></a>
+                      <% end %>
+                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
+                      <%= link "Configurações", to: Routes.adm_settings_path(@conn, :edit),  class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"%>
+                      <%= link "Sair", to: Routes.adm_session_path(@conn, :delete) , method: :delete, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 <% else %>
-  <li><%= link "Register", to: Routes.adm_registration_path(@conn, :new) %></li>
-  <li><%= link "Log in", to: Routes.adm_session_path(@conn, :new) %></li>
+  <%= link "Início", to: Routes.page_path(@conn, :index) , class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"%>
+  <%= link "Register", to: Routes.adm_registration_path(@conn, :new),  class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"%>
+  <%= link "Log in", to: Routes.adm_session_path(@conn, :new) ,  class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"%>
 <% end %>
-</ul>

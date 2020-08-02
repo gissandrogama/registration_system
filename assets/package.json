@@ -7,10 +7,14 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@tailwindcss/ui": "^0.3.0",
+    "alpinejs": "^2.4.1",
+    "chrome-headless-render-pdf": "^1.8.5",
+    "nprogress": "^0.2.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
+    "postcss-import": "12.0.1",
+    "phoenix_live_view": "file:../deps/phoenix_live_view",
     "tailwindcss": "^1.5.2"
   },
   "devDependencies": {
@@ -23,6 +27,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.2",
     "terser-webpack-plugin": "^2.3.2",
     "webpack": "4.41.5",

@@ -1,0 +1,59 @@
+<h1>Show Leader</h1>
+
+<ul>
+
+  <li>
+    <strong>Telefone:</strong>
+    <%= @leader.telefone %>
+  </li>
+
+  <li>
+    <strong>Endereco:</strong>
+    <%= @leader.endereco %>
+  </li>
+
+  <li>
+    <strong>Bairro:</strong>
+    <%= @leader.bairro %>
+  </li>
+
+  <li>
+    <strong>Cidade:</strong>
+    <%= @leader.cidade %>
+  </li>
+
+  <li>
+    <strong>Zona:</strong>
+    <%= @leader.zona %>
+  </li>
+
+  <li>
+    <strong>Cecao:</strong>
+    <%= @leader.cecao %>
+  </li>
+
+  <li>
+    <strong>Cpf:</strong>
+    <%= @leader.cpf %>
+  </li>
+
+  <li>
+    <strong>Rg:</strong>
+    <%= @leader.rg %>
+  </li>
+
+  <li>
+    <strong>Cadsus:</strong>
+    <%= @leader.cadsus %>
+  </li>
+
+  <li>
+    <strong>Nm mae:</strong>
+    <%= @leader.nm_mae %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.leader_path(@conn, :edit, @leader) %></span>
+<span><%= link "Back", to: Routes.leader_path(@conn, :index) %></span>
+ 

@@ -1,4 +1,10 @@
-/* This file is for your main application css. */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+
+[x-cloak] {
+  display: none;
+}
+
+@import "./live_view.css";
+
+@tailwind components;
+@tailwind utilities;
