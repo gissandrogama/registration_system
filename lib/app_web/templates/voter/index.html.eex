@@ -1,0 +1,44 @@
+<h1>Listing Voters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Endereco</th>
+      <th>Bairro</th>
+      <th>Sessao</th>
+      <th>Zona</th>
+      <th>Cidade</th>
+      <th>Cpf</th>
+      <th>Rg</th>
+      <th>Telefone</th>
+      <th>Cadsus</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for voter <- @voters do %>
+    <tr>
+      <td><%= voter.name %></td>
+      <td><%= voter.endereco %></td>
+      <td><%= voter.bairro %></td>
+      <td><%= voter.sessao %></td>
+      <td><%= voter.zona %></td>
+      <td><%= voter.cidade %></td>
+      <td><%= voter.cpf %></td>
+      <td><%= voter.rg %></td>
+      <td><%= voter.telefone %></td>
+      <td><%= voter.cadsus %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.voter_path(@conn, :show, voter) %></span>
+        <span><%= link "Edit", to: Routes.voter_path(@conn, :edit, voter) %></span>
+        <span><%= link "Delete", to: Routes.voter_path(@conn, :delete, voter), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Voter", to: Routes.voter_path(@conn, :new) %></span>

@@ -1,0 +1,58 @@
+<h1>Show Voter</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @voter.name %>
+  </li>
+
+  <li>
+    <strong>Endereco:</strong>
+    <%= @voter.endereco %>
+  </li>
+
+  <li>
+    <strong>Bairro:</strong>
+    <%= @voter.bairro %>
+  </li>
+
+  <li>
+    <strong>Sessao:</strong>
+    <%= @voter.sessao %>
+  </li>
+
+  <li>
+    <strong>Zona:</strong>
+    <%= @voter.zona %>
+  </li>
+
+  <li>
+    <strong>Cidade:</strong>
+    <%= @voter.cidade %>
+  </li>
+
+  <li>
+    <strong>Cpf:</strong>
+    <%= @voter.cpf %>
+  </li>
+
+  <li>
+    <strong>Rg:</strong>
+    <%= @voter.rg %>
+  </li>
+
+  <li>
+    <strong>Telefone:</strong>
+    <%= @voter.telefone %>
+  </li>
+
+  <li>
+    <strong>Cadsus:</strong>
+    <%= @voter.cadsus %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.voter_path(@conn, :edit, @voter) %></span>
+<span><%= link "Back", to: Routes.voter_path(@conn, :index) %></span>

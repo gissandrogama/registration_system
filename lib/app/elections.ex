@@ -101,4 +101,100 @@ defmodule App.Elections do
   def change_leader(%Leader{} = leader, attrs \\ %{}) do
     Leader.changeset(leader, attrs)
   end
+
+  alias App.Elections.Voter
+
+  @doc """
+  Returns the list of voters.
+
+  ## Examples
+
+      iex> list_voters()
+      [%Voter{}, ...]
+
+  """
+  def list_voters do
+    Repo.all(Voter)
+  end
+
+  @doc """
+  Gets a single voter.
+
+  Raises `Ecto.NoResultsError` if the Voter does not exist.
+
+  ## Examples
+
+      iex> get_voter!(123)
+      %Voter{}
+
+      iex> get_voter!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_voter!(id), do: Repo.get!(Voter, id)
+
+  @doc """
+  Creates a voter.
+
+  ## Examples
+
+      iex> create_voter(%{field: value})
+      {:ok, %Voter{}}
+
+      iex> create_voter(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_voter(attrs \\ %{}) do
+    %Voter{}
+    |> Voter.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a voter.
+
+  ## Examples
+
+      iex> update_voter(voter, %{field: new_value})
+      {:ok, %Voter{}}
+
+      iex> update_voter(voter, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_voter(%Voter{} = voter, attrs) do
+    voter
+    |> Voter.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a voter.
+
+  ## Examples
+
+      iex> delete_voter(voter)
+      {:ok, %Voter{}}
+
+      iex> delete_voter(voter)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_voter(%Voter{} = voter) do
+    Repo.delete(voter)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking voter changes.
+
+  ## Examples
+
+      iex> change_voter(voter)
+      %Ecto.Changeset{data: %Voter{}}
+
+  """
+  def change_voter(%Voter{} = voter, attrs \\ %{}) do
+    Voter.changeset(voter, attrs)
+  end
 end

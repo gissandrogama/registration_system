@@ -14,8 +14,10 @@ defmodule App.Repo.Migrations.CreateName do
       add :rg, :string
       add :cadsus, :string
       add :nm_mae, :string
+      add :adm_id, references(:admins, on_delete: :nothing), null: false
 
       timestamps()
     end
+    create index(:name, [:adm_id])
   end
 end

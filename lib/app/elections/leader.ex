@@ -2,6 +2,8 @@ defmodule App.Elections.Leader do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias App.Accounts.Adm
+
   schema "name" do
     field :name, :string
     field :bairro, :string
@@ -14,6 +16,7 @@ defmodule App.Elections.Leader do
     field :rg, :string
     field :telefone, :string
     field :zona, :string
+    belongs_to :adm, Adm
 
     timestamps()
   end
@@ -32,7 +35,8 @@ defmodule App.Elections.Leader do
       :cpf,
       :rg,
       :cadsus,
-      :nm_mae
+      :nm_mae,
+      :adm_id
     ])
     |> validate_required([
       :name,
@@ -45,7 +49,9 @@ defmodule App.Elections.Leader do
       :cpf,
       :rg,
       :cadsus,
-      :nm_mae
+      :nm_mae,
+      :adm_id
     ])
+    |> foreign_key_constraint(:adm_id)
   end
 end
