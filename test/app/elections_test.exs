@@ -116,9 +116,42 @@ defmodule App.ElectionsTest do
   describe "voters" do
     alias App.Elections.Voter
 
-    @valid_attrs %{bairro: "some bairro", cadsus: "some cadsus", cidade: "some cidade", cpf: "some cpf", endereco: "some endereco", name: "some name", rg: "some rg", sessao: "some sessao", telefone: "some telefone", zona: "some zona"}
-    @update_attrs %{bairro: "some updated bairro", cadsus: "some updated cadsus", cidade: "some updated cidade", cpf: "some updated cpf", endereco: "some updated endereco", name: "some updated name", rg: "some updated rg", sessao: "some updated sessao", telefone: "some updated telefone", zona: "some updated zona"}
-    @invalid_attrs %{bairro: nil, cadsus: nil, cidade: nil, cpf: nil, endereco: nil, name: nil, rg: nil, sessao: nil, telefone: nil, zona: nil}
+    @valid_attrs %{
+      bairro: "some bairro",
+      cadsus: "some cadsus",
+      cidade: "some cidade",
+      cpf: "some cpf",
+      endereco: "some endereco",
+      name: "some name",
+      rg: "some rg",
+      sessao: "some sessao",
+      telefone: "some telefone",
+      zona: "some zona"
+    }
+    @update_attrs %{
+      bairro: "some updated bairro",
+      cadsus: "some updated cadsus",
+      cidade: "some updated cidade",
+      cpf: "some updated cpf",
+      endereco: "some updated endereco",
+      name: "some updated name",
+      rg: "some updated rg",
+      sessao: "some updated sessao",
+      telefone: "some updated telefone",
+      zona: "some updated zona"
+    }
+    @invalid_attrs %{
+      bairro: nil,
+      cadsus: nil,
+      cidade: nil,
+      cpf: nil,
+      endereco: nil,
+      name: nil,
+      rg: nil,
+      sessao: nil,
+      telefone: nil,
+      zona: nil
+    }
 
     def voter_fixture(attrs \\ %{}) do
       {:ok, voter} =

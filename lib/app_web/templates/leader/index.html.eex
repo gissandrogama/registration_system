@@ -1,44 +1,84 @@
-<h1>Listing Name</h1>
+<div class="flex flex-col">
+  <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+      <h1>Listing Name</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Telefone</th>
-      <th>Endereco</th>
-      <th>Bairro</th>
-      <th>Cidade</th>
-      <th>Zona</th>
-      <th>Cecao</th>
-      <th>Cpf</th>
-      <th>Rg</th>
-      <th>Cadsus</th>
-      <th>Nm mae</th>
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Nome
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Telefone
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Endereco
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Bairro
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Cidade
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Zona
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Sessão
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Cpf
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              RG
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Cadsus
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Nome mãe
+            </th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for leader <- @name do %>
-    <tr>
-      <td><%= leader.telefone %></td>
-      <td><%= leader.endereco %></td>
-      <td><%= leader.bairro %></td>
-      <td><%= leader.cidade %></td>
-      <td><%= leader.zona %></td>
-      <td><%= leader.cecao %></td>
-      <td><%= leader.cpf %></td>
-      <td><%= leader.rg %></td>
-      <td><%= leader.cadsus %></td>
-      <td><%= leader.nm_mae %></td>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <%= for leader <- @name do %>
+          <tr>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.telefone %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.endereco %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.bairro %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cidade %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.zona %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cecao %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cpf %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.rg %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cadsus %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.nm_mae %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.leader_path(@conn, :show, leader) %></span>
-        <span><%= link "Edit", to: Routes.leader_path(@conn, :edit, leader) %></span>
-        <span><%= link "Delete", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+              <span><%= link "Show", to: Routes.leader_path(@conn, :show, leader), class: "text-indigo-600 hover:text-indigo-900" %></span>
+              <span><%= link "Edit", to: Routes.leader_path(@conn, :edit, leader), class: "text-indigo-600 hover:text-indigo-900" %></span>
+              <span><%= link "Delete", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Are you sure?"], class: "ml-4 text-indigo-600 hover:text-indigo-900 cursor-pointer" %></span>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<span><%= link "New Leader", to: Routes.leader_path(@conn, :new) %></span>
+      <span><%= link "New Leader", to: Routes.leader_path(@conn, :new) %></span>
+    </div>
+  </div>
+</div>

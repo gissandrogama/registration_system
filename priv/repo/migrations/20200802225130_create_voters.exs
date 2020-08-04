@@ -13,7 +13,7 @@ defmodule App.Repo.Migrations.CreateVoters do
       add :rg, :string
       add :telefone, :string
       add :cadsus, :string
-      add :leader_id, references(:name, on_delete: :nothing)
+      add :leader_id, references(:name, on_delete: :nothing), null: false
 
       timestamps()
     end

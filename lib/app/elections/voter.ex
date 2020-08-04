@@ -1,4 +1,7 @@
 defmodule App.Elections.Voter do
+  @moduledoc """
+  Schema of the elections
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -23,8 +26,32 @@ defmodule App.Elections.Voter do
   @doc false
   def changeset(voter, attrs) do
     voter
-    |> cast(attrs, [:name, :endereco, :bairro, :sessao, :zona, :cidade, :cpf, :rg, :telefone, :cadsus, :leader_id])
-    |> validate_required([:name, :endereco, :bairro, :sessao, :zona, :cidade, :cpf, :rg, :telefone, :cadsus, :leader_id])
+    |> cast(attrs, [
+      :name,
+      :endereco,
+      :bairro,
+      :sessao,
+      :zona,
+      :cidade,
+      :cpf,
+      :rg,
+      :telefone,
+      :cadsus,
+      :leader_id
+    ])
+    |> validate_required([
+      :name,
+      :endereco,
+      :bairro,
+      :sessao,
+      :zona,
+      :cidade,
+      :cpf,
+      :rg,
+      :telefone,
+      :cadsus,
+      :leader_id
+    ])
     |> foreign_key_constraint(:leader_id)
   end
 end

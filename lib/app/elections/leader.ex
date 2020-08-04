@@ -1,4 +1,7 @@
 defmodule App.Elections.Leader do
+  @moduledoc """
+  Schema of the leaders
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -16,7 +19,7 @@ defmodule App.Elections.Leader do
     field :rg, :string
     field :telefone, :string
     field :zona, :string
-    belongs_to :adm, Adm
+    belongs_to :adm_by, Adm
 
     timestamps()
   end
@@ -36,7 +39,7 @@ defmodule App.Elections.Leader do
       :rg,
       :cadsus,
       :nm_mae,
-      :adm_id
+      :adm_by_id
     ])
     |> validate_required([
       :name,
@@ -50,8 +53,8 @@ defmodule App.Elections.Leader do
       :rg,
       :cadsus,
       :nm_mae,
-      :adm_id
+      :adm_by_id
     ])
-    |> foreign_key_constraint(:adm_id)
+    |> foreign_key_constraint(:adm_by_id)
   end
 end

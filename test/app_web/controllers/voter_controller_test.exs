@@ -3,9 +3,42 @@ defmodule AppWeb.VoterControllerTest do
 
   alias App.Elections
 
-  @create_attrs %{bairro: "some bairro", cadsus: "some cadsus", cidade: "some cidade", cpf: "some cpf", endereco: "some endereco", name: "some name", rg: "some rg", sessao: "some sessao", telefone: "some telefone", zona: "some zona"}
-  @update_attrs %{bairro: "some updated bairro", cadsus: "some updated cadsus", cidade: "some updated cidade", cpf: "some updated cpf", endereco: "some updated endereco", name: "some updated name", rg: "some updated rg", sessao: "some updated sessao", telefone: "some updated telefone", zona: "some updated zona"}
-  @invalid_attrs %{bairro: nil, cadsus: nil, cidade: nil, cpf: nil, endereco: nil, name: nil, rg: nil, sessao: nil, telefone: nil, zona: nil}
+  @create_attrs %{
+    bairro: "some bairro",
+    cadsus: "some cadsus",
+    cidade: "some cidade",
+    cpf: "some cpf",
+    endereco: "some endereco",
+    name: "some name",
+    rg: "some rg",
+    sessao: "some sessao",
+    telefone: "some telefone",
+    zona: "some zona"
+  }
+  @update_attrs %{
+    bairro: "some updated bairro",
+    cadsus: "some updated cadsus",
+    cidade: "some updated cidade",
+    cpf: "some updated cpf",
+    endereco: "some updated endereco",
+    name: "some updated name",
+    rg: "some updated rg",
+    sessao: "some updated sessao",
+    telefone: "some updated telefone",
+    zona: "some updated zona"
+  }
+  @invalid_attrs %{
+    bairro: nil,
+    cadsus: nil,
+    cidade: nil,
+    cpf: nil,
+    endereco: nil,
+    name: nil,
+    rg: nil,
+    sessao: nil,
+    telefone: nil,
+    zona: nil
+  }
 
   def fixture(:voter) do
     {:ok, voter} = Elections.create_voter(@create_attrs)
@@ -75,6 +108,7 @@ defmodule AppWeb.VoterControllerTest do
     test "deletes chosen voter", %{conn: conn, voter: voter} do
       conn = delete(conn, Routes.voter_path(conn, :delete, voter))
       assert redirected_to(conn) == Routes.voter_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.voter_path(conn, :show, voter))
       end
