@@ -1,44 +1,55 @@
-<h1>Listing Voters</h1>
+<div class="flex flex-col">
+  <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+      <h1 class="text-2xl font-semibold text-gray-800">Lista de Eleitores</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Endereco</th>
-      <th>Bairro</th>
-      <th>Sessao</th>
-      <th>Zona</th>
-      <th>Cidade</th>
-      <th>Cpf</th>
-      <th>Rg</th>
-      <th>Telefone</th>
-      <th>Cadsus</th>
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Nome
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Telefone
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Endereco
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Bairro
+            </th>
+            <th
+              class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              Cidade
+            </th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for voter <- @voters do %>
-    <tr>
-      <td><%= voter.name %></td>
-      <td><%= voter.endereco %></td>
-      <td><%= voter.bairro %></td>
-      <td><%= voter.sessao %></td>
-      <td><%= voter.zona %></td>
-      <td><%= voter.cidade %></td>
-      <td><%= voter.cpf %></td>
-      <td><%= voter.rg %></td>
-      <td><%= voter.telefone %></td>
-      <td><%= voter.cadsus %></td>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <%= for voter <- @voters do %>
+          <tr>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= voter.name %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= voter.telefone %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= voter.endereco %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= voter.bairro %></td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= voter.cidade %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.voter_path(@conn, :show, voter) %></span>
-        <span><%= link "Edit", to: Routes.voter_path(@conn, :edit, voter) %></span>
-        <span><%= link "Delete", to: Routes.voter_path(@conn, :delete, voter), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+              <span><%= link "Ver mais", to: Routes.voter_path(@conn, :show, voter), class: "text-indigo-600 hover:text-indigo-900" %></span>
+              <span><%= link "Editar", to: Routes.voter_path(@conn, :edit, voter), class: "ml-4 text-indigo-600 hover:text-indigo-900" %></span>
+              <span><%= link "Excluir", to: Routes.voter_path(@conn, :delete, voter), method: :delete, data: [confirm: "Are you sure?"], class: "ml-4 text-indigo-600 hover:text-indigo-900 cursor-pointer" %></span>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<span><%= link "New Voter", to: Routes.voter_path(@conn, :new) %></span>
+      <span><%= link "Cadastrar Eleitor", to: Routes.voter_path(@conn, :new), class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" %></span>
+    </div>
+  </div>
+</div>
