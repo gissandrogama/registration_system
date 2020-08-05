@@ -1,5 +1,13 @@
-<h1>Edit Leader</h1>
+<h1 class="text-2xl text-center font-semibold text-gray-800">Edit Leader</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.leader_path(@conn, :update, @leader)) %>
 
-<span><%= link "Back", to: Routes.leader_path(@conn, :index) %></span>
+<div class="flex items-center px-6 py-3">
+  <span class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+    <svg class="h-8 w-8 fill-current text-gray-600"
+      viewBox="0 0 24 24" >
+      <path d="M15 19l-7-7 7-7"></path>
+    </svg>
+    <%= link "Voltar", to: Routes.leader_path(@conn, :index) %>
+  </span>
+</div>

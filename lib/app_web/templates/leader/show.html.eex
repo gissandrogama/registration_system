@@ -1,61 +1,52 @@
-      <h1>Show Leader</h1>
-
-      <ul>
-
-        <li>
-          <strong>Telefone:</strong>
-          <%= @leader.telefone %>
-        </li>
-
-        <li>
-          <strong>Endereco:</strong>
-          <%= @leader.endereco %>
-        </li>
-
-        <li>
-          <strong>Bairro:</strong>
-          <%= @leader.bairro %>
-        </li>
-
-        <li>
-          <strong>Cidade:</strong>
-          <%= @leader.cidade %>
-        </li>
-
-        <li>
-          <strong>Zona:</strong>
-          <%= @leader.zona %>
-        </li>
-
-        <li>
-          <strong>Cecao:</strong>
-          <%= @leader.cecao %>
-        </li>
-
-        <li>
-          <strong>Cpf:</strong>
-          <%= @leader.cpf %>
-        </li>
-
-        <li>
-          <strong>Rg:</strong>
-          <%= @leader.rg %>
-        </li>
-
-        <li>
-          <strong>Cadsus:</strong>
-          <%= @leader.cadsus %>
-        </li>
-
-        <li>
-          <strong>Nm mae:</strong>
-          <%= @leader.nm_mae %>
-        </li>
-
-      </ul>
-
-      <span><%= link "Edit", to: Routes.leader_path(@conn, :edit, @leader) %></span>
-      <span><%= link "Back", to: Routes.leader_path(@conn, :index) %></span>
+<!-- component -->
+<div class="flex items-center justify-center">
+<div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4">
+        <div class="flex items-center px-6 py-3 bg-gray-900">
+            <h1 class="mx-3 text-white font-semibold text-lg"><%= @leader.name %></h1>
+        </div>
+        <div class="py-4 px-6">
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Contato</h1>
+                <p class="px-2 text-sm"><%= @leader.telefone %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Endereço</h1>
+                <p class="px-2 text-sm"><%= @leader.endereco %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Bairro</h1>
+                <p class="px-2 text-sm"><%= @leader.bairro %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Cidade</h1>
+                <p class="px-2 text-sm"><%= @leader.cidade %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Zona</h1>
+                <p class="px-2 text-sm"><%= @leader.zona %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Sessão</h1>
+                <p class="px-2 text-sm"><%= @leader.cecao %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">CPF</h1>
+                <p class="px-2 text-sm"><%= @leader.cpf %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">RG</h1>
+                <p class="px-2 text-sm"><%= @leader.rg %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Cartão Sus</h1>
+                <p class="px-2 text-sm"><%= @leader.cadsus %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Nome da Mãe</h1>
+                <p class="px-2 text-sm"><%= @leader.nm_mae %></p>
+            </div>
+      <span class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Editar", to: Routes.leader_path(@conn, :edit, @leader) %></span>
+      <span class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Voltar", to: Routes.leader_path(@conn, :index) %></span>
+        </div>
     </div>
-  </div>
 </div>
