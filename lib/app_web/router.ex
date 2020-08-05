@@ -21,7 +21,6 @@ defmodule AppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/leader", LeaderController
     live "/team", TeamLive, :index
     live "/team/:id/delete-member", TeamLive, :delete_member
   end
@@ -70,6 +69,7 @@ defmodule AppWeb.Router do
     put "/admins/settings/update_email", AdmSettingsController, :update_email
     get "/admins/settings/confirm_email/:token", AdmSettingsController, :confirm_email
     resources "/voter", VoterController
+    resources "/leader", LeaderController
   end
 
   scope "/", AppWeb do
