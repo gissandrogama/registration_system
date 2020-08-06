@@ -5,8 +5,8 @@ defmodule AppWeb.LeaderController do
   alias App.Elections.Leader
 
   def index(conn, _params) do
-    name = Elections.list_name()
-    render(conn, "index.html", name: name)
+    leaders = Elections.list_leaders()
+    render(conn, "index.html", leaders: leaders)
   end
 
   def new(conn, _params) do

@@ -7,7 +7,7 @@ defmodule App.Elections.Leader do
 
   alias App.Accounts.Adm
 
-  schema "name" do
+  schema "leaders" do
     field :name, :string
     field :bairro, :string
     field :cadsus, :string

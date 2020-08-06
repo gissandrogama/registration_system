@@ -18,7 +18,8 @@ defmodule App.Elections.Voter do
     field :sessao, :string
     field :telefone, :string
     field :zona, :string
-    belongs_to :leader, Leader
+    field :nm_mae, :string
+    belongs_to :leader_by, Leader
 
     timestamps()
   end
@@ -37,7 +38,8 @@ defmodule App.Elections.Voter do
       :rg,
       :telefone,
       :cadsus,
-      :leader_id
+      :nm_mae,
+      :leader_by_id
     ])
     |> validate_required([
       :name,
@@ -50,8 +52,9 @@ defmodule App.Elections.Voter do
       :rg,
       :telefone,
       :cadsus,
-      :leader_id
+      :nm_mae,
+      :leader_by_id
     ])
-    |> foreign_key_constraint(:leader_id)
+    |> foreign_key_constraint(:leader_by_id)
   end
 end

@@ -17,7 +17,7 @@ defmodule App.Elections do
       [%Leader{}, ...]
 
   """
-  def list_name do
+  def list_leaders do
     Repo.all(Leader)
   end
 

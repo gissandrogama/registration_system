@@ -2,7 +2,7 @@ defmodule App.Repo.Migrations.CreateName do
   use Ecto.Migration
 
   def change do
-    create table(:name) do
+    create table(:leaders) do
       add :name, :string
       add :telefone, :string
       add :endereco, :string
@@ -19,6 +19,6 @@ defmodule App.Repo.Migrations.CreateName do
       timestamps()
     end
 
-    create index(:name, [:adm_by_id])
+    create index(:leaders, [:adm_by_id])
   end
 end
