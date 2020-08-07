@@ -17,6 +17,7 @@ defmodule AppWeb.LeaderController do
   def create(conn, %{"leader" => leader_params}) do
     adm = conn.assigns.current_adm
     leader_params = Map.put(leader_params, "adm_by_id", adm.id)
+
     case Elections.create_leader(leader_params) do
       {:ok, leader} ->
         conn

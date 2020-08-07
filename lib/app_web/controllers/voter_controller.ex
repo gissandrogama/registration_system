@@ -20,7 +20,8 @@ defmodule AppWeb.VoterController do
     IO.inspect(voter_params)
     id = voter_params["leader_by_id"]
     id = String.to_integer(id)
-    voter_params = Map.put voter_params, "leader_by_id", id
+    voter_params = Map.put(voter_params, "leader_by_id", id)
+
     case Elections.create_voter(voter_params) do
       {:ok, voter} ->
         conn
