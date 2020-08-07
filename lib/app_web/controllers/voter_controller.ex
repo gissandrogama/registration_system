@@ -12,16 +12,15 @@ defmodule AppWeb.VoterController do
 
   def new(conn, _params) do
     leaders = Elections.list_leaders()
-    IO.inspect(leaders)
     changeset = Elections.change_voter(%Voter{})
     render(conn, "new.html", changeset: changeset, leaders: leaders)
   end
 
   def create(conn, %{"voter" => voter_params}) do
+    IO.inspect(voter_params)
     id = voter_params["leader_by_id"]
     id = String.to_integer(id)
     voter_params = Map.put voter_params, "leader_by_id", id
-    IO.inspect(voter_params)
     case Elections.create_voter(voter_params) do
       {:ok, voter} ->
         conn
