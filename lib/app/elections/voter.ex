@@ -4,6 +4,7 @@ defmodule App.Elections.Voter do
   """
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query, only: [from: 2]
 
   alias App.Elections.Leader
 
@@ -56,5 +57,16 @@ defmodule App.Elections.Voter do
       :leader_by_id
     ])
     |> foreign_key_constraint(:leader_by_id)
+  end
+
+  def search(query, search_term) do
+    wilcard_search = "%#{search_term}%"
+
+    from voter in query,
+    where: ilike(voter.bairro, ^wilcard_search),
+    or_where: ilike(voter.cidade, ^wilcard_search),
+    or_where: ilike(voter.name, ^wilcard_search),
+    or_where: ilike(voter.sessao, ^wilcard_search),
+    or_where: ilike(voter.zona, ^wilcard_search)
   end
 end

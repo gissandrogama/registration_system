@@ -4,8 +4,8 @@ defmodule AppWeb.VoterController do
   alias App.Elections
   alias App.Elections.Voter
 
-  def index(conn, _params) do
-    voters = Elections.list_voters()
+  def index(conn, params) do
+    voters = Elections.list_voters(params)
     render(conn, "index.html", voters: voters)
   end
 

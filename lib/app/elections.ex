@@ -113,8 +113,13 @@ defmodule App.Elections do
       [%Voter{}, ...]
 
   """
-  def list_voters do
-    Repo.all(Voter)
+  def list_voters(params) do
+    search_term = get_in(params, ["query"])
+
+    Voter
+    |> Voter.search(search_term)
+    |> Repo.all()
+    
   end
 
   @doc """
