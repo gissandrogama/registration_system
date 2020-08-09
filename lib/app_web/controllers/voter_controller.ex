@@ -6,7 +6,6 @@ defmodule AppWeb.VoterController do
 
   def index(conn, _params) do
     voters = Elections.list_voters()
-    IO.inspect(voters)
     render(conn, "index.html", voters: voters)
   end
 
@@ -20,6 +19,7 @@ defmodule AppWeb.VoterController do
     id = voter_params["leader_by_id"]
     id = String.to_integer(id)
     voter_params = Map.put(voter_params, "leader_by_id", id)
+
     case Elections.create_voter(voter_params) do
       {:ok, voter} ->
         conn
