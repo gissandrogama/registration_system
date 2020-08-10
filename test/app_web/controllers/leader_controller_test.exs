@@ -4,6 +4,7 @@ defmodule AppWeb.LeaderControllerTest do
   alias App.Elections
 
   @create_attrs %{
+    name: "some bairro",
     bairro: "some bairro",
     cadsus: "some cadsus",
     cecao: "some cecao",
@@ -16,6 +17,7 @@ defmodule AppWeb.LeaderControllerTest do
     zona: "some zona"
   }
   @update_attrs %{
+    name: "some updated name",
     bairro: "some updated bairro",
     cadsus: "some updated cadsus",
     cecao: "some updated cecao",
@@ -28,6 +30,7 @@ defmodule AppWeb.LeaderControllerTest do
     zona: "some updated zona"
   }
   @invalid_attrs %{
+    name: nil,
     bairro: nil,
     cadsus: nil,
     cecao: nil,

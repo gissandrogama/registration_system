@@ -7,6 +7,7 @@ defmodule App.ElectionsTest do
     alias App.Elections.Leader
 
     @valid_attrs %{
+      name: "some name",
       bairro: "some bairro",
       cadsus: "some cadsus",
       cecao: "some cecao",
@@ -19,6 +20,7 @@ defmodule App.ElectionsTest do
       zona: "some zona"
     }
     @update_attrs %{
+      name: "some updated name",
       bairro: "some updated bairro",
       cadsus: "some updated cadsus",
       cecao: "some updated cecao",
@@ -31,6 +33,7 @@ defmodule App.ElectionsTest do
       zona: "some updated zona"
     }
     @invalid_attrs %{
+      name: nil,
       bairro: nil,
       cadsus: nil,
       cecao: nil,
@@ -64,6 +67,7 @@ defmodule App.ElectionsTest do
 
     test "create_leader/1 with valid data creates a leader" do
       assert {:ok, %Leader{} = leader} = Elections.create_leader(@valid_attrs)
+      assert leader.name == "some name"
       assert leader.bairro == "some bairro"
       assert leader.cadsus == "some cadsus"
       assert leader.cecao == "some cecao"
@@ -83,6 +87,7 @@ defmodule App.ElectionsTest do
     test "update_leader/2 with valid data updates the leader" do
       leader = leader_fixture()
       assert {:ok, %Leader{} = leader} = Elections.update_leader(leader, @update_attrs)
+      assert leader.name == "some updated name"
       assert leader.bairro == "some updated bairro"
       assert leader.cadsus == "some updated cadsus"
       assert leader.cecao == "some updated cecao"
