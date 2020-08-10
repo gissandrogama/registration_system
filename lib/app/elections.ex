@@ -10,16 +10,30 @@ defmodule App.Elections do
   alias App.Elections.Voter
 
   @doc """
-  Returns the list of name.
+  Returns the list of leader.
 
   ## Examples
 
-      iex> list_name()
+      iex> list_leaders()
       [%Leader{}, ...]
 
   """
   def list_leaders do
     Repo.all(Leader)
+  end
+
+  @doc """
+  Returns the list of leader with adm_by_id.
+
+  ## Examples
+
+      iex> list_all_leader(adm_id)
+      [%Leader{}, ...]
+
+  """
+  def list_all_leader(adm_id) do
+    query = from l in Leader, where: l.adm_by_id == ^adm_id
+    Repo.all(query)
   end
 
   @doc """
@@ -37,7 +51,6 @@ defmodule App.Elections do
     query = from l in Leader, where: ilike(l.name, ^"%#{name}%")
     Repo.all(query)
   end
-
 
   @doc """
   Function that receives a leader consultation and returns voters allied to them
@@ -143,7 +156,7 @@ defmodule App.Elections do
 
   ## Examples
 
-      iex> list_voters()
+      iex> list_voters(params)
       [%Voter{}, ...]
 
   """
@@ -153,6 +166,20 @@ defmodule App.Elections do
     Voter
     |> Voter.search(search_term)
     |> Repo.all()
+  end
+
+  @doc """
+  Returns the list of voters.
+
+  ## Examples
+
+      iex> list_voters()
+      [%Voter{}, ...]
+
+  """
+  def list_all_voters(leader_id) do
+    query = from v in Voter, where: v.leader_by_id == ^leader_id
+    Repo.all(query)
   end
 
   @doc """

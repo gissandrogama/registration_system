@@ -1,27 +1,25 @@
 defmodule App.ElectionsTest do
   use App.DataCase
 
+  import App.ElectionsFixtures
+  import App.AccountsFixtures
   alias App.Elections
+  alias App.Elections.{Leader, Voter}
 
-  describe "name" do
-    alias App.Elections.Leader
+  describe "leaders" do
+    setup do
+      %{leader: leader_fixture()}
+    end
 
-    @valid_attrs %{
-      bairro: "some bairro",
-      cadsus: "some cadsus",
-      cecao: "some cecao",
-      cidade: "some cidade",
-      cpf: "some cpf",
-      endereco: "some endereco",
-      nm_mae: "some nm_mae",
-      rg: "some rg",
-      telefone: "some telefone",
-      zona: "some zona"
-    }
+    setup do
+      %{adm: adm_fixture()}
+    end
+
     @update_attrs %{
+      name: "some updated name",
       bairro: "some updated bairro",
       cadsus: "some updated cadsus",
-      cecao: "some updated cecao",
+      cecao: "some updated sessao",
       cidade: "some updated cidade",
       cpf: "some updated cpf",
       endereco: "some updated endereco",
@@ -40,21 +38,13 @@ defmodule App.ElectionsTest do
       nm_mae: nil,
       rg: nil,
       telefone: nil,
-      zona: nil
+      zona: nil,
+      adm_by_id: nil
     }
 
-    def leader_fixture(attrs \\ %{}) do
-      {:ok, leader} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Elections.create_leader()
-
-      leader
-    end
-
-    test "list_name/0 returns all name" do
+    test "list_name/0 returns all leaders" do
       leader = leader_fixture()
-      assert Elections.list_name() == [leader]
+      assert Elections.list_all_leader(leader.adm_by_id) == [leader]
     end
 
     test "get_leader!/1 returns the leader with given id" do
@@ -62,11 +52,27 @@ defmodule App.ElectionsTest do
       assert Elections.get_leader!(leader.id) == leader
     end
 
-    test "create_leader/1 with valid data creates a leader" do
-      assert {:ok, %Leader{} = leader} = Elections.create_leader(@valid_attrs)
+    test "create_leader/1 with valid data creates a leader", %{adm: adm} do
+      assert {:ok, %Leader{} = leader} =
+               Elections.create_leader(%{
+                 name: "some name",
+                 bairro: "some bairro",
+                 cadsus: "some cadsus",
+                 cecao: "some sessao",
+                 cidade: "some cidade",
+                 cpf: "some cpf",
+                 endereco: "some endereco",
+                 nm_mae: "some nm_mae",
+                 rg: "some rg",
+                 telefone: "some telefone",
+                 zona: "some zona",
+                 adm_by_id: adm.id
+               })
+
+      assert leader.name == "some name"
       assert leader.bairro == "some bairro"
       assert leader.cadsus == "some cadsus"
-      assert leader.cecao == "some cecao"
+      assert leader.cecao == "some sessao"
       assert leader.cidade == "some cidade"
       assert leader.cpf == "some cpf"
       assert leader.endereco == "some endereco"
@@ -74,6 +80,7 @@ defmodule App.ElectionsTest do
       assert leader.rg == "some rg"
       assert leader.telefone == "some telefone"
       assert leader.zona == "some zona"
+      assert leader.adm_by_id == adm.id
     end
 
     test "create_leader/1 with invalid data returns error changeset" do
@@ -83,9 +90,10 @@ defmodule App.ElectionsTest do
     test "update_leader/2 with valid data updates the leader" do
       leader = leader_fixture()
       assert {:ok, %Leader{} = leader} = Elections.update_leader(leader, @update_attrs)
+      assert leader.name == "some updated name"
       assert leader.bairro == "some updated bairro"
       assert leader.cadsus == "some updated cadsus"
-      assert leader.cecao == "some updated cecao"
+      assert leader.cecao == "some updated sessao"
       assert leader.cidade == "some updated cidade"
       assert leader.cpf == "some updated cpf"
       assert leader.endereco == "some updated endereco"
@@ -114,20 +122,14 @@ defmodule App.ElectionsTest do
   end
 
   describe "voters" do
-    alias App.Elections.Voter
+    setup do
+      %{leader: leader_fixture()}
+    end
 
-    @valid_attrs %{
-      bairro: "some bairro",
-      cadsus: "some cadsus",
-      cidade: "some cidade",
-      cpf: "some cpf",
-      endereco: "some endereco",
-      name: "some name",
-      rg: "some rg",
-      sessao: "some sessao",
-      telefone: "some telefone",
-      zona: "some zona"
-    }
+    setup do
+      %{voter: voter_fixture()}
+    end
+
     @update_attrs %{
       bairro: "some updated bairro",
       cadsus: "some updated cadsus",
@@ -150,21 +152,13 @@ defmodule App.ElectionsTest do
       rg: nil,
       sessao: nil,
       telefone: nil,
-      zona: nil
+      zona: nil,
+      leader_by_id: nil
     }
-
-    def voter_fixture(attrs \\ %{}) do
-      {:ok, voter} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Elections.create_voter()
-
-      voter
-    end
 
     test "list_voters/0 returns all voters" do
       voter = voter_fixture()
-      assert Elections.list_voters() == [voter]
+      assert Elections.list_all_voters(voter.leader_by_id) == [voter]
     end
 
     test "get_voter!/1 returns the voter with given id" do
@@ -172,18 +166,34 @@ defmodule App.ElectionsTest do
       assert Elections.get_voter!(voter.id) == voter
     end
 
-    test "create_voter/1 with valid data creates a voter" do
-      assert {:ok, %Voter{} = voter} = Elections.create_voter(@valid_attrs)
+    test "create_voter/1 with valid data creates a voter", %{leader: leader} do
+      assert {:ok, %Voter{} = voter} =
+               Elections.create_voter(%{
+                 name: "some name",
+                 bairro: "some bairro",
+                 cidade: "some cidade",
+                 sessao: "some sessao",
+                 zona: "some zona",
+                 cpf: "some cpf",
+                 rg: "some rg",
+                 endereco: "some endereço",
+                 telefone: "some telefone",
+                 nm_mae: "some mãe",
+                 cadsus: "some cadsus",
+                 leader_by_id: leader.id
+               })
+
       assert voter.bairro == "some bairro"
       assert voter.cadsus == "some cadsus"
       assert voter.cidade == "some cidade"
       assert voter.cpf == "some cpf"
-      assert voter.endereco == "some endereco"
+      assert voter.endereco == "some endereço"
       assert voter.name == "some name"
       assert voter.rg == "some rg"
       assert voter.sessao == "some sessao"
       assert voter.telefone == "some telefone"
       assert voter.zona == "some zona"
+      assert voter.leader_by_id == leader.id
     end
 
     test "create_voter/1 with invalid data returns error changeset" do
