@@ -22,11 +22,32 @@ defmodule App.Elections do
     Repo.all(Leader)
   end
 
+  @doc """
+  Function that returns the leader, passing the name as a parameter
+
+    ## Examples
+
+      iex> leader_query(%{"query_leader" => "name"})
+      [%Leader{}, ...]
+
+  """
+
   def leaders_query(params) do
     name = Map.fetch!(params, "query_leader")
     query = from l in Leader, where: ilike(l.name, ^"%#{name}%")
     Repo.all(query)
   end
+
+
+  @doc """
+  Function that receives a leader consultation and returns voters allied to them
+
+  ## Examples
+
+      iex> leader_voter(query)
+      [%Voter{}, ...]
+
+  """
 
   def leader_voter(query) do
     [head | _tail] = query
@@ -116,7 +137,6 @@ defmodule App.Elections do
   def change_leader(%Leader{} = leader, attrs \\ %{}) do
     Leader.changeset(leader, attrs)
   end
-
 
   @doc """
   Returns the list of voters.

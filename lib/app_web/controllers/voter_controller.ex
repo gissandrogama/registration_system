@@ -6,13 +6,15 @@ defmodule AppWeb.VoterController do
 
   def index(conn, params) do
     case params do
-      %{"query" => _ } ->
+      %{"query" => _} ->
         voters = Elections.list_voters(params)
         render(conn, "index.html", voters: voters)
-      %{"query_leader" => _ } ->
+
+      %{"query_leader" => _} ->
         query = Elections.leaders_query(params)
         voters = Elections.leader_voter(query)
         render(conn, "index.html", voters: voters)
+
       _ ->
         voters = Elections.list_voters(params)
         render(conn, "index.html", voters: voters)

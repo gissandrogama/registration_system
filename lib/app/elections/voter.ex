@@ -60,14 +60,13 @@ defmodule App.Elections.Voter do
   end
 
   def search(query, search_term) do
-    IO.inspect(query)
     wilcard_search = "%#{search_term}%"
 
     from voter in query,
-    where: ilike(voter.bairro, ^wilcard_search),
-    or_where: ilike(voter.cidade, ^wilcard_search),
-    or_where: ilike(voter.name, ^wilcard_search),
-    or_where: voter.sessao == ^wilcard_search,
-    or_where: voter.zona == ^wilcard_search
+      where: ilike(voter.bairro, ^wilcard_search),
+      or_where: ilike(voter.cidade, ^wilcard_search),
+      or_where: ilike(voter.name, ^wilcard_search),
+      or_where: voter.sessao == ^wilcard_search,
+      or_where: voter.zona == ^wilcard_search
   end
 end
