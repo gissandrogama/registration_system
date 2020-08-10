@@ -1,4 +1,7 @@
 defmodule AppWeb.PageLive do
+  @moduledoc """
+  function taht mount socket
+  """
   use AppWeb, :live_view
 
   @impl true

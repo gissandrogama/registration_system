@@ -1,4 +1,7 @@
 defmodule App.Elections.Leader do
+  @moduledoc """
+  Schema Leader 
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
