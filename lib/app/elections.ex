@@ -7,6 +7,7 @@ defmodule App.Elections do
   alias App.Repo
 
   alias App.Elections.Leader
+  alias App.Elections.Voter
 
   @doc """
   Returns the list of name.
@@ -19,6 +20,20 @@ defmodule App.Elections do
   """
   def list_leaders do
     Repo.all(Leader)
+  end
+
+  def leaders_query(params) do
+    name = Map.fetch!(params, "query_leader")
+    query = from l in Leader, where: ilike(l.name, ^"%#{name}%")
+    Repo.all(query)
+  end
+
+  def leader_voter(query) do
+    [head | _tail] = query
+    query_m = head
+    id = Map.fetch!(query_m, :id)
+    query = from v in Voter, where: v.leader_by_id == ^id
+    Repo.all(query)
   end
 
   @doc """
@@ -102,7 +117,6 @@ defmodule App.Elections do
     Leader.changeset(leader, attrs)
   end
 
-  alias App.Elections.Voter
 
   @doc """
   Returns the list of voters.
@@ -119,7 +133,6 @@ defmodule App.Elections do
     Voter
     |> Voter.search(search_term)
     |> Repo.all()
-    
   end
 
   @doc """
