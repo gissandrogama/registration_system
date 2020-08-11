@@ -1,7 +1,10 @@
 defmodule AppWeb.VoterControllerTest do
   use AppWeb.ConnCase
 
+  import App.ElectionsFixtures
   alias App.Elections
+
+  setup :register_and_log_in_adm
 
   @create_attrs %{
     bairro: "some bairro",
@@ -13,7 +16,8 @@ defmodule AppWeb.VoterControllerTest do
     rg: "some rg",
     sessao: "some sessao",
     telefone: "some telefone",
-    zona: "some zona"
+    zona: "some zona",
+    nm_mae: "some mae"
   }
   @update_attrs %{
     bairro: "some updated bairro",
@@ -25,7 +29,8 @@ defmodule AppWeb.VoterControllerTest do
     rg: "some updated rg",
     sessao: "some updated sessao",
     telefone: "some updated telefone",
-    zona: "some updated zona"
+    zona: "some updated zona",
+    nm_mae: "some updated mae"
   }
   @invalid_attrs %{
     bairro: nil,
@@ -37,25 +42,42 @@ defmodule AppWeb.VoterControllerTest do
     rg: nil,
     sessao: nil,
     telefone: nil,
-    zona: nil
+    zona: nil,
+    nm_mae: nil,
+    leader_by_id: nil
   }
 
   def fixture(:voter) do
-    {:ok, voter} = Elections.create_voter(@create_attrs)
+    {:ok, voter} =
+      Elections.create_voter(%{
+        bairro: "some bairro",
+        cadsus: "some cadsus",
+        cidade: "some cidade",
+        cpf: "some cpf",
+        endereco: "some endereco",
+        name: "some name",
+        rg: "some rg",
+        sessao: "some sessao",
+        telefone: "some telefone",
+        zona: "some zona",
+        nm_mae: "some mae",
+        leader_by_id: leader_fixture().id
+      })
+
     voter
   end
 
   describe "index" do
     test "lists all voters", %{conn: conn} do
       conn = get(conn, Routes.voter_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Voters"
+      assert html_response(conn, 200) =~ "<h1 class=\"text-2xl font-semibold text-gray-800\">Lista de Eleitores</h1>\n\n"
     end
   end
 
   describe "new voter" do
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.voter_path(conn, :new))
-      assert html_response(conn, 200) =~ "New Voter"
+      assert html_response(conn, 200) =~ "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastrar Eleitor</h1>\n\n"
     end
   end
 
