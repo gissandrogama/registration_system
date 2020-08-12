@@ -1,4 +1,4 @@
-defmodule App.Repo.Migrations.CreateName do
+defmodule App.Repo.Migrations.CreateLeaders do
   use Ecto.Migration
 
   def change do

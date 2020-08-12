@@ -4,7 +4,7 @@ defmodule App.ElectionsFixtures do
   entities via the `App.ElectionsFixtures`.
   """
 
-  alias App.AccountsFixtures
+  import App.AccountsFixtures
   alias App.Elections
 
   # params to create leaders
@@ -30,7 +30,7 @@ defmodule App.ElectionsFixtures do
 
   def leader_cadsus, do: "some cadsus"
 
-  def adm_by_id, do: AccountsFixtures.adm_fixture()
+  def adm_by_id, do: adm_fixture()
 
   def leader_fixture(attrs \\ %{}) do
     {:ok, leader} =
@@ -47,7 +47,7 @@ defmodule App.ElectionsFixtures do
         telefone: leader_telefone(),
         nm_mae: leader_nm_mae(),
         cadsus: leader_cadsus(),
-        adm_by_id: AccountsFixtures.adm_fixture().id
+        adm_by_id: adm_fixture().id
       })
       |> Elections.create_leader()
 

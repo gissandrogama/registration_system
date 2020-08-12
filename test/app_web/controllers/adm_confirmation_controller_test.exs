@@ -47,7 +47,7 @@ defmodule AppWeb.AdmConfirmationControllerTest do
       conn =
         post(conn, Routes.adm_confirmation_path(conn, :create), %{
           "adm" => %{"email" => "unknown@example.com"}
-        })New
+        })
 
       assert redirected_to(conn) == "/"
       assert get_flash(conn, :info) =~ "If your e-mail is in our system"
