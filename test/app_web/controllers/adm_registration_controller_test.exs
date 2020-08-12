@@ -7,8 +7,12 @@ defmodule AppWeb.AdmRegistrationControllerTest do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.adm_registration_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "\n  <h1 class=\"text-4xl tracking-tight\">Registro de Administradores</h1>\n  "
-      assert response =~ "<p class=\"text-blue-500\">\n    <a href=\"/admins/log_in\">Acessar</a> |\n<a href=\"/admins/reset_password\">Esqueceu sua senha?</a>  </p>\n"
+
+      assert response =~
+               "\n  <h1 class=\"text-4xl tracking-tight\">Registro de Administradores</h1>\n  "
+
+      assert response =~
+               "<p class=\"text-blue-500\">\n    <a href=\"/admins/log_in\">Acessar</a> |\n<a href=\"/admins/reset_password\">Esqueceu sua senha?</a>  </p>\n"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -34,7 +38,9 @@ defmodule AppWeb.AdmRegistrationControllerTest do
       # Now do a logged in request and assert on the menu
       conn = get(conn, "/")
       response = html_response(conn, 200)
-      assert response =~ "\n  <p class=\"alert alert-info\" role=\"alert\">Adm created successfully.</p>\n  "
+
+      assert response =~
+               "\n  <p class=\"alert alert-info\" role=\"alert\">Adm created successfully.</p>\n  "
     end
 
     test "render errors for invalid data", %{conn: conn} do

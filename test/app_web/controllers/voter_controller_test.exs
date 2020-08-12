@@ -77,21 +77,24 @@ defmodule AppWeb.VoterControllerTest do
       %{leaders: leader_fixture()}
     end
 
-    test "redirects to show when data is valid", %{conn: conn, leaders: leaders } do
-      conn = post(conn, Routes.voter_path(conn, :create), voter: %{
-        name: "some name",
-        endereco: "some endereco",
-        bairro: "some bairro",
-        sessao: "some sessao",
-        zona: "some zona",
-        cidade: "some cidade",
-        cpf: "some cpf",
-        rg: "some rg",
-        telefone: "some telefone",
-        cadsus: "some cadsus",
-        nm_mae: "some mae",
-        leader_by_id: leaders.id
-      })
+    test "redirects to show when data is valid", %{conn: conn, leaders: leaders} do
+      conn =
+        post(conn, Routes.voter_path(conn, :create),
+          voter: %{
+            name: "some name",
+            endereco: "some endereco",
+            bairro: "some bairro",
+            sessao: "some sessao",
+            zona: "some zona",
+            cidade: "some cidade",
+            cpf: "some cpf",
+            rg: "some rg",
+            telefone: "some telefone",
+            cadsus: "some cadsus",
+            nm_mae: "some mae",
+            leader_by_id: leaders.id
+          }
+        )
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == Routes.voter_path(conn, :show, id)
@@ -113,7 +116,9 @@ defmodule AppWeb.VoterControllerTest do
 
     test "renders form for editing chosen voter", %{conn: conn, voter: voter} do
       conn = get(conn, Routes.voter_path(conn, :edit, voter))
-      assert html_response(conn, 200) =~ "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Editar Eleitor</h1>\n\n"
+
+      assert html_response(conn, 200) =~
+               "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Editar Eleitor</h1>\n\n"
     end
   end
 
@@ -130,7 +135,9 @@ defmodule AppWeb.VoterControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn, voter: voter} do
       conn = put(conn, Routes.voter_path(conn, :update, voter), voter: @invalid_attrs)
-      assert html_response(conn, 200) =~ "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Editar Eleitor</h1>\n\n"
+
+      assert html_response(conn, 200) =~
+               "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Editar Eleitor</h1>\n\n"
     end
   end
 

@@ -10,7 +10,9 @@ defmodule AppWeb.AdmSettingsControllerTest do
     test "renders settings page", %{conn: conn} do
       conn = get(conn, Routes.adm_settings_path(conn, :edit))
       response = html_response(conn, 200)
-      assert response =~ "  <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Configurações</h1>\n  <h3 class=\"text-2xl tracking-tight\">mudança de e-mail</h3>\n</div>\n\n"
+
+      assert response =~
+               "  <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Configurações</h1>\n  <h3 class=\"text-2xl tracking-tight\">mudança de e-mail</h3>\n</div>\n\n"
     end
 
     test "redirects if adm is not logged in" do
@@ -48,7 +50,10 @@ defmodule AppWeb.AdmSettingsControllerTest do
         })
 
       response = html_response(old_password_conn, 200)
-      assert response =~ "  <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Configurações</h1>\n  <h3 class=\"text-2xl tracking-tight\">mudança de e-mail</h3>\n</div>\n\n"
+
+      assert response =~
+               "  <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Configurações</h1>\n  <h3 class=\"text-2xl tracking-tight\">mudança de e-mail</h3>\n</div>\n\n"
+
       assert response =~ "should be at least 6 character(s)"
       assert response =~ "does not match password"
       assert response =~ "is not valid"
@@ -79,7 +84,10 @@ defmodule AppWeb.AdmSettingsControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "  <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Configurações</h1>\n  <h3 class=\"text-2xl tracking-tight\">mudança de e-mail</h3>\n</div>\n\n"
+
+      assert response =~
+               "  <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Configurações</h1>\n  <h3 class=\"text-2xl tracking-tight\">mudança de e-mail</h3>\n</div>\n\n"
+
       assert response =~ "must have the @ sign and no spaces"
       assert response =~ "is not valid"
     end
