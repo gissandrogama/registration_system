@@ -1,6 +1,6 @@
 <h1 class="text-2xl text-center font-semibold text-gray-800">Editar Eleitor</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.voter_path(@conn, :update, @voter)) %>
+<%= render "form_up.html", Map.put(assigns, :action, Routes.voter_path(@conn, :update, @voter)) %>
 
 <div class="flex items-center px-6 py-3">
   <span class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
@@ -11,4 +11,3 @@
     <%= link "Voltar", to: Routes.voter_path(@conn, :index) %>
   </span>
 </div>
-
