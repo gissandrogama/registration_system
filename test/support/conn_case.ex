@@ -42,4 +42,30 @@ defmodule AppWeb.ConnCase do
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  @doc """
+  Setup helper that registers and logs in admins.
+
+      setup :register_and_log_in_adm
+
+  It stores an updated connection and a registered adm in the
+  test context.
+  """
+  def register_and_log_in_adm(%{conn: conn}) do
+    adm = App.AccountsFixtures.adm_fixture()
+    %{conn: log_in_adm(conn, adm), adm: adm}
+  end
+
+  @doc """
+  Logs the given `adm` into the `conn`.
+
+  It returns an updated `conn`.
+  """
+  def log_in_adm(conn, adm) do
+    token = App.Accounts.generate_adm_session_token(adm)
+
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:adm_token, token)
+  end
 end

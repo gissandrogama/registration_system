@@ -1,0 +1,83 @@
+<div class="text-center mt-24">
+  <h1 class="text-4xl tracking-tight">Configurações</h1>
+  <h3 class="text-2xl tracking-tight">mudança de e-mail</h3>
+</div>
+
+<div class="flex justify-center my-2 mx-4 md:mx-0">
+<%= form_for @email_changeset, Routes.adm_settings_path(@conn, :update_email), [class: "w-full max-w-xl bg-white rounded-lg shadow-md p-6"], fn f -> %>
+  <%= if @email_changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :name, "nome", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= email_input f, :name, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :name %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :email, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= email_input f, :email, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :email %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :current_password, "Senha atual", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2", for: "current_password_for_email"] %>
+    <%= password_input f, :current_password, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true, name: "current_password", id: "current_password_for_email"] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :current_password %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= submit "alterar e-mail", [class: "appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500"] %>
+  </div>
+<% end %>
+</div>
+
+<div class="text-center mt-24">
+  <h3 class="text-2xl tracking-tight">mudança de senha</h3>
+</div>
+<div class="flex justify-center my-2 mx-4 md:mx-0">
+<%= form_for @password_changeset, Routes.adm_settings_path(@conn, :update_password), [class: "w-full max-w-xl bg-white rounded-lg shadow-md p-6"], fn f -> %>
+  <%= if @password_changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :password, "Nova senha", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= password_input f, :password, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :password %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :password_confirmation, "confirmar senha", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= password_input f, :password_confirmation, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :password_confirmation %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :current_password, "Senha atual", [for: "current_password_for_password", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= password_input f, :current_password, [name: "current_password", id: "current_password_for_password", class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :current_password %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= submit "alterar senha", [class: "appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500"] %>
+  </div>
+<% end %>
+</div>
