@@ -11,6 +11,7 @@ defmodule AppWeb.Endpoint do
   ]
 
   socket "/socket", AppWeb.UserSocket,
+    timeout: 45_000,
     websocket: true,
     longpoll: false
 
