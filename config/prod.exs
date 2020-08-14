@@ -15,7 +15,7 @@ config :app, AppWeb.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
-  
+
 # Configure your database
 config :app, AppWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
@@ -62,4 +62,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
-#import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
