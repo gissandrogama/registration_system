@@ -36,8 +36,7 @@ config :app, AppWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
   ssl: true,
   url: database_url,
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  show_sensitive_data_on_connection_error: true
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 # Do not print debug messages in production
 config :logger, level: :info
