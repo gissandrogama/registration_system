@@ -1,5 +1,19 @@
 use Mix.Config
 
+database_url =
+  System.get_env("DATABASE_URL") ||
+    raise """
+    environment variable DATABASE_URL is missing.
+    For example: ecto://USER:PASS@HOST/DATABASE
+    """
+
+    secret_key_base =
+      System.get_env("SECRET_KEY_BASE") ||
+        raise """
+        environment variable SECRET_KEY_BASE is missing.
+        You can generate one by calling: mix phx.gen.secret
+        """
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
@@ -15,15 +29,15 @@ config :app, AppWeb.Endpoint,
   url: [scheme: "https", host: "pesquise-liaderes.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
+  secret_key_base: secret_key_base
 
 # Configure your database
 config :app, AppWeb.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("DATABASE_URL"),
+  ssl: true,
+  url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  show_sensitive_data_on_connection_error: true,
-  ssl: true
+  show_sensitive_data_on_connection_error: true
 
 # Do not print debug messages in production
 config :logger, level: :info
