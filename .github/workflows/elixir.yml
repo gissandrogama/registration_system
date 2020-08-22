@@ -45,7 +45,7 @@ jobs:
       - run: mix format --check-formatted
       - run: mix credo --strict
 
-deploy:
+  deploy:
     # only run this job if the verify job succeeds
     needs: test
 
