@@ -57,7 +57,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run:
+      - run: |
           mix deps.get
           (cd assets && yarn)
       - run: mix compile --warnings-as-errors
