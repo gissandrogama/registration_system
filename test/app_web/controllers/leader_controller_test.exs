@@ -71,7 +71,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :index))
 
       assert html_response(conn, 200) =~
-               " <div>\n    <nav class=\"bg-gray-800\">\n      <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n        <div class=\"flex items-center justify-between h-16\">\n          <div class=\"flex items-center\">\n            <div class=\"flex-shrink-0\">\n              <img class=\"h-8 w-8\" src=\"https://tailwindui.com//img/logos/workflow-mark-on-dark.svg\" alt=\"Workflow logo\" />\n              </div>\n              <div class=\"hidden md:block\">\n\n<div class=\"ml-10 flex items-baseline\">\n<a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700\" href=\"/\">Início</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/leader\">Líderes</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/voter\">Eleitores</a></div>\n</div>\n</div>"
+               "\n      <h1 class=\"text-2xl font-semibold text-gray-800\">Lista de Líderes</h1>\n\n      "
     end
   end
 
@@ -80,7 +80,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :new))
 
       assert html_response(conn, 200) =~
-               " <div>\n    <nav class=\"bg-gray-800\">\n      <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n        <div class=\"flex items-center justify-between h-16\">\n          <div class=\"flex items-center\">\n            <div class=\"flex-shrink-0\">\n              <img class=\"h-8 w-8\" src=\"https://tailwindui.com//img/logos/workflow-mark-on-dark.svg\" alt=\"Workflow logo\" />\n              </div>\n              <div class=\"hidden md:block\">\n\n<div class=\"ml-10 flex items-baseline\">\n<a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700\" href=\"/\">Início</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/leader\">Líderes</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/voter\">Eleitores</a></div>\n</div>\n</div>"
+               "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastar líder</h1>\n\n"
     end
   end
 
@@ -94,14 +94,14 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :show, id))
 
       assert html_response(conn, 200) =~
-               " <div>\n    <nav class=\"bg-gray-800\">\n      <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n        <div class=\"flex items-center justify-between h-16\">\n          <div class=\"flex items-center\">\n            <div class=\"flex-shrink-0\">\n              <img class=\"h-8 w-8\" src=\"https://tailwindui.com//img/logos/workflow-mark-on-dark.svg\" alt=\"Workflow logo\" />\n              </div>\n              <div class=\"hidden md:block\">\n\n<div class=\"ml-10 flex items-baseline\">\n<a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700\" href=\"/\">Início</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/leader\">Líderes</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/voter\">Eleitores</a></div>\n</div>\n</div>"
+               "\n  <p class=\"alert alert-info\" role=\"alert\">Leader created successfully.</p>\n  "
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post(conn, Routes.leader_path(conn, :create), leader: @invalid_attrs)
 
       assert html_response(conn, 200) =~
-               " <div>\n    <nav class=\"bg-gray-800\">\n      <div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\">\n        <div class=\"flex items-center justify-between h-16\">\n          <div class=\"flex items-center\">\n            <div class=\"flex-shrink-0\">\n              <img class=\"h-8 w-8\" src=\"https://tailwindui.com//img/logos/workflow-mark-on-dark.svg\" alt=\"Workflow logo\" />\n              </div>\n              <div class=\"hidden md:block\">\n\n<div class=\"ml-10 flex items-baseline\">\n<a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700\" href=\"/\">Início</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/leader\">Líderes</a><a class=\"ml-4 px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700\" data-phx-link=\"patch\" data-phx-link-state=\"push\" href=\"/voter\">Eleitores</a></div>\n</div>\n</div>"
+               "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastar líder</h1>\n\n"
     end
   end
 
