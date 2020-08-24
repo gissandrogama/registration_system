@@ -133,7 +133,9 @@ defmodule AppWeb.AdmAuthTest do
       conn = conn |> fetch_flash() |> AdmAuth.require_authenticated_adm([])
       assert conn.halted
       assert redirected_to(conn) == Routes.adm_session_path(conn, :new)
-      assert get_flash(conn, :error) == "Você deve fazer login como Administrador para acessar esta página."
+
+      assert get_flash(conn, :error) ==
+               "Você deve fazer login como Administrador para acessar esta página."
     end
 
     test "stores the path to redirect to on GET", %{conn: conn} do
