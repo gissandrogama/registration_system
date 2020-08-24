@@ -3,6 +3,8 @@ defmodule AppWeb.AdmRegistrationControllerTest do
 
   import App.AccountsFixtures
 
+  setup :register_and_log_in_adm
+
   describe "GET /admins/register" do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.adm_registration_path(conn, :new))
@@ -13,11 +15,6 @@ defmodule AppWeb.AdmRegistrationControllerTest do
 
       assert response =~
                "<p class=\"text-blue-500\">\n    <a href=\"/admins/log_in\">Acessar</a> |\n<a href=\"/admins/reset_password\">Esqueceu sua senha?</a>  </p>\n"
-    end
-
-    test "redirects if already logged in", %{conn: conn} do
-      conn = conn |> log_in_adm(adm_fixture()) |> get(Routes.adm_registration_path(conn, :new))
-      assert redirected_to(conn) == "/"
     end
   end
 

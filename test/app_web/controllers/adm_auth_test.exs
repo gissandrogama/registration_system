@@ -19,7 +19,7 @@ defmodule AppWeb.AdmAuthTest do
       conn = AdmAuth.log_in_adm(conn, adm)
       assert token = get_session(conn, :adm_token)
       assert get_session(conn, :live_socket_id) == "admins_sessions:#{Base.url_encode64(token)}"
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == "/leader"
       assert Accounts.get_adm_by_session_token(token)
     end
 
@@ -118,7 +118,7 @@ defmodule AppWeb.AdmAuthTest do
     test "redirects if adm is authenticated", %{conn: conn, adm: adm} do
       conn = conn |> assign(:current_adm, adm) |> AdmAuth.redirect_if_adm_is_authenticated([])
       assert conn.halted
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == "/leader"
     end
 
     test "does not redirect if adm is not authenticated", %{conn: conn} do
@@ -133,7 +133,9 @@ defmodule AppWeb.AdmAuthTest do
       conn = conn |> fetch_flash() |> AdmAuth.require_authenticated_adm([])
       assert conn.halted
       assert redirected_to(conn) == Routes.adm_session_path(conn, :new)
-      assert get_flash(conn, :error) == "You must log in to access this page."
+
+      assert get_flash(conn, :error) ==
+               "Você deve fazer login como Administrador para acessar esta página."
     end
 
     test "stores the path to redirect to on GET", %{conn: conn} do

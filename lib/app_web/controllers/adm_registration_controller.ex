@@ -3,7 +3,6 @@ defmodule AppWeb.AdmRegistrationController do
 
   alias App.Accounts
   alias App.Accounts.Adm
-  alias AppWeb.AdmAuth
 
   def new(conn, _params) do
     changeset = Accounts.change_adm_registration(%Adm{})
@@ -21,7 +20,7 @@ defmodule AppWeb.AdmRegistrationController do
 
         conn
         |> put_flash(:info, "Adm created successfully.")
-        |> AdmAuth.log_in_adm(adm)
+        |> redirect(to: "/leader")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

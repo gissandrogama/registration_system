@@ -135,7 +135,7 @@ defmodule AppWeb.AdmAuth do
       conn
     else
       conn
-      |> put_flash(:error, "You must log in to access this page.")
+      |> put_flash(:error, "Você deve fazer login como Administrador para acessar esta página.")
       |> maybe_store_return_to()
       |> redirect(to: Routes.adm_session_path(conn, :new))
       |> halt()
@@ -148,5 +148,5 @@ defmodule AppWeb.AdmAuth do
 
   defp maybe_store_return_to(conn), do: conn
 
-  defp signed_in_path(_conn), do: "/"
+  defp signed_in_path(_conn), do: "/leader"
 end
