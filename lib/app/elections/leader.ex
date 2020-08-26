@@ -57,8 +57,10 @@ defmodule App.Elections.Leader do
       :adm_by_id
       ])
     |> validate_cpf(:cpf, message: "CPF inválido")
-    |> unsafe_validate_unique([:rg, :cpf], App.Repo)
-    |> unique_constraint([:rg, :cpf])
+    |> unsafe_validate_unique(:cpf, App.Repo)
+    |> unique_constraint(:cpf)
+    |> unsafe_validate_unique(:rg, App.Repo)
+    |> unique_constraint(:rg)
     |> foreign_key_constraint(:adm_by_id)
   end
 end
