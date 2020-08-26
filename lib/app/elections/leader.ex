@@ -4,6 +4,7 @@ defmodule App.Elections.Leader do
   """
   use Ecto.Schema
   import Ecto.Changeset
+  import Brcpfcnpj.Changeset
 
   alias App.Accounts.Adm
 
@@ -54,7 +55,10 @@ defmodule App.Elections.Leader do
       :cadsus,
       :nm_mae,
       :adm_by_id
-    ])
+      ])
+    |> validate_cpf(:cpf, message: "CPF inválido")
+    |> unsafe_validate_unique([:rg, :cpf], App.Repo)
+    |> unique_constraint([:rg, :cpf])
     |> foreign_key_constraint(:adm_by_id)
   end
 end
