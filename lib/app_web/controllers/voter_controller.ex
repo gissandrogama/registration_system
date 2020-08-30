@@ -22,6 +22,7 @@ defmodule AppWeb.VoterController do
   end
 
   def new(conn, _params) do
+    IO.inspect(conn.request_path)
     leaders = Elections.list_leaders()
     changeset = Elections.change_voter(%Voter{})
     render(conn, "new.html", changeset: changeset, leaders: leaders)
@@ -54,7 +55,6 @@ defmodule AppWeb.VoterController do
 
   def update(conn, %{"id" => id, "voter" => voter_params}) do
     voter = Elections.get_voter!(id)
-
     case Elections.update_voter(voter, voter_params) do
       {:ok, voter} ->
         conn
