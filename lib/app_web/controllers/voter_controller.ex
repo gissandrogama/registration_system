@@ -22,7 +22,6 @@ defmodule AppWeb.VoterController do
   end
 
   def new(conn, _params) do
-    IO.inspect(conn.request_path)
     leaders = Elections.list_leaders()
     changeset = Elections.change_voter(%Voter{})
     render(conn, "new.html", changeset: changeset, leaders: leaders)
@@ -55,6 +54,12 @@ defmodule AppWeb.VoterController do
 
   def update(conn, %{"id" => id, "voter" => voter_params}) do
     voter = Elections.get_voter!(id)
+    leader_id = search_leader_id(voter_params)
+    # leader = Elections.leaders_query(%{"query_leader" => leader_id})
+    # [ head | _tail ] = leader
+    # leader_id = head.id
+    # IO.inspect(leader_id)
+    voter_params = Map.put voter_params, "leader_by_id", leader_id
     case Elections.update_voter(voter, voter_params) do
       {:ok, voter} ->
         conn
@@ -64,6 +69,14 @@ defmodule AppWeb.VoterController do
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", voter: voter, changeset: changeset)
     end
+  end
+
+  defp search_leader_id(params) do
+    leader_name = params["leader_by_id"]
+    leader = Elections.leaders_query(%{"query_leader" => leader_name})
+    [head | _tail] = leader
+    leader = head.id
+    leader
   end
 
   def delete(conn, %{"id" => id}) do
