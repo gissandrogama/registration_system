@@ -18,9 +18,9 @@ defmodule App.ElectionsFixtures do
 
   def leader_zona, do: "some zona"
 
-  def leader_cpf, do: Brcpfcnpj.cpf_generate
+  def leader_cpf, do: Brcpfcnpj.cpf_generate()
 
-  def leader_rg, do: Brcpfcnpj.cpf_generate
+  def leader_rg, do: Brcpfcnpj.cpf_generate()
 
   def leader_endereco, do: "some endereco"
 
@@ -65,9 +65,9 @@ defmodule App.ElectionsFixtures do
 
   def voter_zona, do: "some zona"
 
-  def voter_cpf, do: Brcpfcnpj.cpf_generate
+  def voter_cpf, do: Brcpfcnpj.cpf_generate()
 
-  def voter_rg, do: Brcpfcnpj.cpf_generate
+  def voter_rg, do: Brcpfcnpj.cpf_generate()
 
   def voter_endereco, do: "some endereco"
 
