@@ -21,7 +21,7 @@ defmodule App.ElectionsTest do
       cadsus: "some updated cadsus",
       cecao: "some updated sessao",
       cidade: "some updated cidade",
-      cpf: "some updated cpf",
+      cpf: "30131772090",
       endereco: "some updated endereco",
       nm_mae: "some updated nm_mae",
       rg: "some updated rg",
@@ -60,7 +60,7 @@ defmodule App.ElectionsTest do
                  cadsus: "some cadsus",
                  cecao: "some sessao",
                  cidade: "some cidade",
-                 cpf: "some cpf",
+                 cpf: Brcpfcnpj.cpf_generate(),
                  endereco: "some endereco",
                  nm_mae: "some nm_mae",
                  rg: "some rg",
@@ -74,7 +74,7 @@ defmodule App.ElectionsTest do
       assert leader.cadsus == "some cadsus"
       assert leader.cecao == "some sessao"
       assert leader.cidade == "some cidade"
-      assert leader.cpf == "some cpf"
+      assert leader.cpf == leader.cpf
       assert leader.endereco == "some endereco"
       assert leader.nm_mae == "some nm_mae"
       assert leader.rg == "some rg"
@@ -95,7 +95,7 @@ defmodule App.ElectionsTest do
       assert leader.cadsus == "some updated cadsus"
       assert leader.cecao == "some updated sessao"
       assert leader.cidade == "some updated cidade"
-      assert leader.cpf == "some updated cpf"
+      assert leader.cpf == "30131772090"
       assert leader.endereco == "some updated endereco"
       assert leader.nm_mae == "some updated nm_mae"
       assert leader.rg == "some updated rg"
@@ -134,7 +134,7 @@ defmodule App.ElectionsTest do
       bairro: "some updated bairro",
       cadsus: "some updated cadsus",
       cidade: "some updated cidade",
-      cpf: "some updated cpf",
+      cpf: "82021304094",
       endereco: "some updated endereco",
       name: "some updated name",
       rg: "some updated rg",
@@ -174,7 +174,7 @@ defmodule App.ElectionsTest do
                  cidade: "some cidade",
                  sessao: "some sessao",
                  zona: "some zona",
-                 cpf: "some cpf",
+                 cpf: Brcpfcnpj.cpf_generate(),
                  rg: "some rg",
                  endereco: "some endereço",
                  telefone: "some telefone",
@@ -186,7 +186,7 @@ defmodule App.ElectionsTest do
       assert voter.bairro == "some bairro"
       assert voter.cadsus == "some cadsus"
       assert voter.cidade == "some cidade"
-      assert voter.cpf == "some cpf"
+      assert voter.cpf == voter.cpf
       assert voter.endereco == "some endereço"
       assert voter.name == "some name"
       assert voter.rg == "some rg"
@@ -206,7 +206,7 @@ defmodule App.ElectionsTest do
       assert voter.bairro == "some updated bairro"
       assert voter.cadsus == "some updated cadsus"
       assert voter.cidade == "some updated cidade"
-      assert voter.cpf == "some updated cpf"
+      assert voter.cpf == "82021304094"
       assert voter.endereco == "some updated endereco"
       assert voter.name == "some updated name"
       assert voter.rg == "some updated rg"

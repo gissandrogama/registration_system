@@ -1,6 +1,6 @@
 <!-- component -->
 <div class="flex items-center justify-center">
-<div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4">
+    <div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4">
         <div class="flex items-center px-6 py-3 bg-gray-900">
             <h1 class="mx-3 text-white font-semibold text-lg"><%= @voter.name %></h1>
         </div>
@@ -45,8 +45,14 @@
                 <h1 class="text-1xl font-semibold text-gray-800">Nome da Mãe</h1>
                 <p class="px-2 text-sm"><%= @voter.nm_mae %></p>
             </div>
-      <span class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Editar", to: Routes.voter_path(@conn, :edit, @voter) %></span>
-      <span class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Voltar", to: Routes.voter_path(@conn, :index) %></span>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Líder</h1>
+                <p class="px-2 text-sm"><%= @leader.name %></p>
+            </div>
+            <span
+                class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Editar", to: Routes.voter_path(@conn, :edit, @voter) %></span>
+            <span
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Voltar", to: Routes.voter_path(@conn, :index) %></span>
         </div>
     </div>
 </div>

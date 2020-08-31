@@ -5,6 +5,7 @@ defmodule App.Elections.Voter do
   use Ecto.Schema
   import Ecto.Changeset
   import Ecto.Query, only: [from: 2]
+  import Brcpfcnpj.Changeset
 
   alias App.Elections.Leader
 
@@ -56,6 +57,11 @@ defmodule App.Elections.Voter do
       :nm_mae,
       :leader_by_id
     ])
+    |> validate_cpf(:cpf, message: "CPF inválido")
+    |> unsafe_validate_unique(:cpf, App.Repo)
+    |> unique_constraint(:cpf)
+    |> unsafe_validate_unique(:rg, App.Repo)
+    |> unique_constraint(:rg)
     |> foreign_key_constraint(:leader_by_id)
   end
 
