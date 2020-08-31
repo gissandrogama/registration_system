@@ -43,7 +43,8 @@ defmodule AppWeb.VoterController do
 
   def show(conn, %{"id" => id}) do
     voter = Elections.get_voter!(id)
-    render(conn, "show.html", voter: voter)
+    leader = Elections.get_leader!(voter.leader_by_id)
+    render(conn, "show.html", voter: voter, leader: leader)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -55,11 +56,8 @@ defmodule AppWeb.VoterController do
   def update(conn, %{"id" => id, "voter" => voter_params}) do
     voter = Elections.get_voter!(id)
     leader_id = search_leader_id(voter_params)
-    # leader = Elections.leaders_query(%{"query_leader" => leader_id})
-    # [ head | _tail ] = leader
-    # leader_id = head.id
-    # IO.inspect(leader_id)
     voter_params = Map.put voter_params, "leader_by_id", leader_id
+
     case Elections.update_voter(voter, voter_params) do
       {:ok, voter} ->
         conn

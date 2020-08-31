@@ -45,6 +45,10 @@
                 <h1 class="text-1xl font-semibold text-gray-800">Nome da Mãe</h1>
                 <p class="px-2 text-sm"><%= @voter.nm_mae %></p>
             </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Líder</h1>
+                <p class="px-2 text-sm"><%= @leader.name %></p>
+            </div>
             <span
                 class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Editar", to: Routes.voter_path(@conn, :edit, @voter) %></span>
             <span
