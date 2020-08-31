@@ -28,14 +28,13 @@ defmodule AppWeb.VoterController do
   end
 
   def create(conn, %{"voter" => voter_params}) do
-
     case Elections.create_voter(voter_params) do
       {:ok, voter} ->
         conn
         |> put_flash(:info, "Voter created successfully.")
         |> redirect(to: Routes.voter_path(conn, :show, voter))
 
-        {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, %Ecto.Changeset{} = changeset} ->
         leaders = Elections.list_leaders()
         render(conn, "new.html", changeset: changeset, leaders: leaders)
     end
@@ -56,7 +55,7 @@ defmodule AppWeb.VoterController do
   def update(conn, %{"id" => id, "voter" => voter_params}) do
     voter = Elections.get_voter!(id)
     leader_id = search_leader_id(voter_params)
-    voter_params = Map.put voter_params, "leader_by_id", leader_id
+    voter_params = Map.put(voter_params, "leader_by_id", leader_id)
 
     case Elections.update_voter(voter, voter_params) do
       {:ok, voter} ->

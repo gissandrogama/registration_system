@@ -55,7 +55,7 @@ defmodule App.Elections.Leader do
       :cadsus,
       :nm_mae,
       :adm_by_id
-      ])
+    ])
     |> validate_cpf(:cpf, message: "CPF inválido")
     |> unsafe_validate_unique(:cpf, App.Repo)
     |> unique_constraint(:cpf)
