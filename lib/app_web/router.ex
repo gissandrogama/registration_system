@@ -50,7 +50,7 @@ defmodule AppWeb.Router do
 
   scope "/", AppWeb do
     pipe_through [:browser, :redirect_if_adm_is_authenticated]
-    
+
     get "/admins/log_in", AdmSessionController, :new
     post "/admins/log_in", AdmSessionController, :create
     get "/admins/reset_password", AdmResetPasswordController, :new
@@ -61,7 +61,7 @@ defmodule AppWeb.Router do
 
   scope "/", AppWeb do
     pipe_through [:browser, :require_authenticated_adm]
-    
+
     get "/admins/register", AdmRegistrationController, :new
     post "/admins/register", AdmRegistrationController, :create
     get "/admins/settings", AdmSettingsController, :edit
