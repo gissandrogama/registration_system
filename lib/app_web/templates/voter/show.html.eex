@@ -31,7 +31,7 @@
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">CPF</h1>
-                <p class="px-2 text-sm"><%= @voter.cpf %></p>
+                <p class="px-2 text-sm"><%= Brcpfcnpj.cpf_format(%Cpf{number: @voter.cpf}) %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">RG</h1>
@@ -45,7 +45,7 @@
                 <h1 class="text-1xl font-semibold text-gray-800">Nome da Mãe</h1>
                 <p class="px-2 text-sm"><%= @voter.nm_mae %></p>
             </div>
-            <div class="flex items-baseline mt-4 text-gray-700">
+            <div class="flex items-baseline mt-4 mb-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">Líder</h1>
                 <p class="px-2 text-sm"><%= @leader.name %></p>
             </div>
