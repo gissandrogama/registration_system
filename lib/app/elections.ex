@@ -203,6 +203,7 @@ defmodule App.Elections do
     query = from voter in Voter, where: ilike(voter.name, ^"%#{search_term}%")
     Repo.all(query)
   end
+
   @doc """
   Returns the list of voters.
 
