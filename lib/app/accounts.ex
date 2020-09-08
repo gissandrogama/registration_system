@@ -73,6 +73,7 @@ defmodule App.Accounts do
       {:error, %Ecto.Changeset{}}
 
   """
+
   def register_adm(attrs) do
     %Adm{}
     |> Adm.registration_changeset(attrs)

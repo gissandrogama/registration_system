@@ -31,7 +31,7 @@
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">CPF</h1>
-                <p class="px-2 text-sm"><%= @leader.cpf %></p>
+                <p class="px-2 text-sm"><%= Brcpfcnpj.cpf_format(%Cpf{number: @leader.cpf}) %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">RG</h1>
