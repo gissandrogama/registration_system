@@ -75,4 +75,5 @@ defmodule App.Elections.Voter do
       or_where: voter.sessao == ^wilcard_search,
       or_where: voter.zona == ^wilcard_search
   end
+
 end

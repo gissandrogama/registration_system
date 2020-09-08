@@ -47,8 +47,8 @@ defmodule App.Elections do
   """
 
   def leaders_query(params) do
-    name = Map.fetch!(params, "query_leader")
-    query = from l in Leader, where: ilike(l.name, ^"%#{name}%")
+    search_term = get_in(params, ["query"])
+    query = from l in Leader, where: ilike(l.name, ^"%#{search_term}%")
     Repo.all(query)
   end
 
@@ -156,10 +156,11 @@ defmodule App.Elections do
 
   ## Examples
 
-      iex> list_voters(params)
-      [%Voter{}, ...]
+  iex> list_voters(params)
+  [%Voter{}, ...]
 
   """
+  @spec list_voters(any) :: any
   def list_voters(params) do
     search_term = get_in(params, ["query"])
 
@@ -168,6 +169,40 @@ defmodule App.Elections do
     |> Repo.all()
   end
 
+  @spec list_for_bairro(any) :: any
+  def list_for_bairro(params) do
+    search_term = get_in(params, ["query"])
+    search_term = "%#{search_term}%"
+    query = from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%")
+    Repo.all(query)
+  end
+
+  @spec list_for_sessao(any) :: any
+  def list_for_sessao(params) do
+    search_term = get_in(params, ["query"])
+    query = from voter in Voter, where: voter.sessao == ^search_term
+    Repo.all(query)
+  end
+
+  @spec list_for_zona(any) :: any
+  def list_for_zona(params) do
+    search_term = get_in(params, ["query"])
+    query = from voter in Voter, where: voter.zona == ^search_term
+    Repo.all(query)
+  end
+
+  @spec list_for_city(any) :: any
+  def list_for_city(params) do
+    search_term = get_in(params, ["query"])
+    query = from voter in Voter, where: ilike(voter.cidade, ^"%#{search_term}%")
+    Repo.all(query)
+  end
+
+  def list_for_name(params) do
+    search_term = get_in(params, ["query"])
+    query = from voter in Voter, where: ilike(voter.name, ^"%#{search_term}%")
+    Repo.all(query)
+  end
   @doc """
   Returns the list of voters.
 

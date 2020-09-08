@@ -6,11 +6,27 @@ defmodule AppWeb.VoterController do
 
   def index(conn, params) do
     case params do
-      %{"query" => _} ->
-        voters = Elections.list_voters(params)
+      %{"option" => "bairro", "query" => _} ->
+        voters = Elections.list_for_bairro(params)
         render(conn, "index.html", voters: voters)
 
-      %{"query_leader" => _} ->
+      %{"option" => "sessão", "query" => _} ->
+        voters = Elections.list_for_sessao(params)
+        render(conn, "index.html", voters: voters)
+
+      %{"option" => "zona", "query" => _} ->
+        voters = Elections.list_for_zona(params)
+        render(conn, "index.html", voters: voters)
+
+      %{"option" => "cidade", "query" => _} ->
+        voters = Elections.list_for_city(params)
+        render(conn, "index.html", voters: voters)
+
+      %{"option" => "nome", "query" => _} ->
+        voters = Elections.list_for_name(params)
+        render(conn, "index.html", voters: voters)
+
+      %{"option" => "líder", "query" => _} ->
         query = Elections.leaders_query(params)
         voters = Elections.leader_voter(query)
         render(conn, "index.html", voters: voters)
