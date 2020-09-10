@@ -11,6 +11,7 @@
 </div>
 </div>
 </div>
+
 <div class="hidden md:block">
   <div class="ml-4 flex items-center md:ml-6">
     <button
@@ -41,9 +42,8 @@
           <%= if @current_adm do %>
           <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"><%= @current_adm.name %></a>
           <% end %>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
           <%= link "Configurações", to: Routes.adm_settings_path(@conn, :edit),  class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"%>
-          <%= link "Sair", to: Routes.adm_session_path(@conn, :delete) , method: :delete, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"%>
+          <%= link "Sair", to: Routes.adm_session_path(@conn, :delete), method: :delete, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"%>
         </div>
       </div>
     </div>

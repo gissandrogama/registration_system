@@ -86,7 +86,7 @@ defmodule AppWeb.VoterController do
 
   defp search_leader_id(params) do
     leader_name = params["leader_by_id"]
-    leader = Elections.leaders_query(%{"query_leader" => leader_name})
+    leader = Elections.leaders_query(%{"query" => leader_name})
     [head | _tail] = leader
     leader = head.id
     leader

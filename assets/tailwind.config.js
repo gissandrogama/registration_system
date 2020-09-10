@@ -1,9 +1,12 @@
 module.exports = {
   purge: [
-    './src/**/*.eex',
-    './src/**/*.leex',
+    "../**/*.html.eex",
+    "../**/*.html.leex",
+    "../**/views/**/*.ex",
+    "../**/live/**/*.ex",
+    "./js/**/*.js"
   ],
-  plugins: [
-    require('@tailwindcss/ui'),
-  ]
-}
+  theme: {},
+  variants: {},
+  plugins: []
+};
