@@ -21,7 +21,7 @@ defmodule AppWeb.LeaderController do
     case Elections.create_leader(leader_params) do
       {:ok, leader} ->
         conn
-        |> put_flash(:info, "Leader created successfully.")
+        |> put_flash(:info, "Líder criado com sucesso.")
         |> redirect(to: Routes.leader_path(conn, :show, leader))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -46,7 +46,7 @@ defmodule AppWeb.LeaderController do
     case Elections.update_leader(leader, leader_params) do
       {:ok, leader} ->
         conn
-        |> put_flash(:info, "Leader updated successfully.")
+        |> put_flash(:info, "Líder atualizado com sucesso.")
         |> redirect(to: Routes.leader_path(conn, :show, leader))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -59,7 +59,7 @@ defmodule AppWeb.LeaderController do
     {:ok, _leader} = Elections.delete_leader(leader)
 
     conn
-    |> put_flash(:info, "Leader deleted successfully.")
+    |> put_flash(:info, "Líder excluído com sucesso.")
     |> redirect(to: Routes.leader_path(conn, :index))
   end
 end

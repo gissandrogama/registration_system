@@ -47,7 +47,7 @@ defmodule AppWeb.VoterController do
     case Elections.create_voter(voter_params) do
       {:ok, voter} ->
         conn
-        |> put_flash(:info, "Voter created successfully.")
+        |> put_flash(:info, "Eleitor criado com sucesso.")
         |> redirect(to: Routes.voter_path(conn, :show, voter))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -76,7 +76,7 @@ defmodule AppWeb.VoterController do
     case Elections.update_voter(voter, voter_params) do
       {:ok, voter} ->
         conn
-        |> put_flash(:info, "Voter updated successfully.")
+        |> put_flash(:info, "Eleitor atualizado com sucesso.")
         |> redirect(to: Routes.voter_path(conn, :show, voter))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -97,7 +97,7 @@ defmodule AppWeb.VoterController do
     {:ok, _voter} = Elections.delete_voter(voter)
 
     conn
-    |> put_flash(:info, "Voter deleted successfully.")
+    |> put_flash(:info, "Eleitor excluído com sucesso.")
     |> redirect(to: Routes.voter_path(conn, :index))
   end
 end
