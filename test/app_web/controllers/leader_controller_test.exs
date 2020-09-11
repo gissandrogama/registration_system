@@ -94,7 +94,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :show, id))
 
       assert html_response(conn, 200) =~
-               "\n  <p class=\"alert alert-info\" role=\"alert\">Leader created successfully.</p>\n  "
+               "\n  <p class=\"alert alert-info\" role=\"alert\">Líder criado com sucesso.</p>\n  "
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

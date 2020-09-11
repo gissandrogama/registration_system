@@ -102,7 +102,7 @@ defmodule AppWeb.VoterControllerTest do
       conn = get(conn, Routes.voter_path(conn, :show, id))
 
       assert html_response(conn, 200) =~
-               "\n  <p class=\"alert alert-info\" role=\"alert\">Voter created successfully.</p>\n  "
+               "\n  <p class=\"alert alert-info\" role=\"alert\">Eleitor criado com sucesso.</p>\n  "
     end
   end
 
