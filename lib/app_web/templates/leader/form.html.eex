@@ -8,7 +8,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :name, "nome", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :name, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :name, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :name %>
     </span>
@@ -16,7 +16,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :telefone, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :telefone, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :telefone, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :telefone %>
     </span>
@@ -24,7 +24,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :endereco, "Endereço", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :endereco, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :endereco, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :endereco %>
     </span>
@@ -32,7 +32,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :bairro, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :bairro, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :bairro, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :bairro %>
     </span>
@@ -40,7 +40,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :cidade, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :cidade, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :cidade, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :cidade %>
     </span>
@@ -48,7 +48,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :zona, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :zona, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :zona, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :zona %>
     </span>
@@ -56,7 +56,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :cecao, "Sessão", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :cecao, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :cecao, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :cecao %>
     </span>
@@ -64,7 +64,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :cpf, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :cpf, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :cpf, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :cpf %>
     </span>
@@ -72,7 +72,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :rg, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :rg, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :rg, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :rg %>
     </span>
@@ -80,7 +80,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :cadsus, "Cartão do Sus", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :cadsus, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :cadsus, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :cadsus %>
     </span>
@@ -88,7 +88,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :nm_mae, "Nome da Mãe", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :nm_mae, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <%= text_input f, :nm_mae, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :nm_mae %>
     </span>
