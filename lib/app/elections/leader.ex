@@ -10,8 +10,10 @@ defmodule App.Elections.Leader do
 
   schema "leaders" do
     field :name, :string
+    field :nascimento, :string
     field :bairro, :string
     field :cadsus, :string
+    field :titulo, :string
     field :cecao, :string
     field :cidade, :string
     field :cpf, :string
@@ -30,10 +32,12 @@ defmodule App.Elections.Leader do
     leader
     |> cast(attrs, [
       :name,
+      :nascimento,
       :telefone,
       :endereco,
       :bairro,
       :cidade,
+      :titulo,
       :zona,
       :cecao,
       :cpf,
@@ -44,16 +48,9 @@ defmodule App.Elections.Leader do
     ])
     |> validate_required([
       :name,
-      :telefone,
-      :endereco,
-      :bairro,
-      :cidade,
+      :titulo,
       :zona,
       :cecao,
-      :cpf,
-      :rg,
-      :cadsus,
-      :nm_mae,
       :adm_by_id
     ])
     |> validate_cpf(:cpf, message: "CPF inválido")

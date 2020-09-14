@@ -8,9 +8,17 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :name, "nome", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :name, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
+    <%= text_input f, :name, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :name %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :nascimento, "Data de nascimento", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :nascimento, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :nascimento %>
     </span>
   </div>
 
@@ -47,8 +55,16 @@
   </div>
 
   <div class="w-full md:w-full px-3 mb-6">
+    <%= label f, :titulo, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
+    <%= text_input f, :titulo, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
+    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+      <%= error_tag f, :titulo %>
+    </span>
+  </div>
+
+  <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :zona, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :zona, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
+    <%= text_input f, :zona, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :zona %>
     </span>
@@ -56,7 +72,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :sessao, "Sessão", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :sessao, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
+    <%= text_input f, :sessao, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :sessao %>
     </span>
@@ -97,7 +113,7 @@
   <%= if @conn.request_path == "/voter/new" do %>
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :leader_by_id, "Líder responsável", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= select f, :leader_by_id, Enum.map(@leaders, &{&1.name, &1.id}), [class: "block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
+    <%= select f, :leader_by_id, Enum.map(@leaders, &{&1.name, &1.id}), [class: "block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :leader_by_id %>
     </span>
@@ -105,7 +121,7 @@
   <% else %>
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :leader_by_id, "Líder responsável", [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :leader_by_id, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
+    <%= text_input f, :leader_by_id, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", required: true] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :leader_by_id %>
     </span>

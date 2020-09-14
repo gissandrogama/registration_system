@@ -4,8 +4,10 @@ defmodule App.Repo.Migrations.CreateVoters do
   def change do
     create table(:voters) do
       add :name, :string
+      add :nascimento, :string
       add :endereco, :string
       add :bairro, :string
+      add :titulo, :string
       add :sessao, :string
       add :zona, :string
       add :cidade, :string

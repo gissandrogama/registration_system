@@ -21,6 +21,8 @@ defmodule App.Elections.Voter do
     field :telefone, :string
     field :zona, :string
     field :nm_mae, :string
+    field :nascimento, :string
+    field :titulo, :string
     belongs_to :leader_by, Leader
 
     timestamps()
@@ -31,8 +33,10 @@ defmodule App.Elections.Voter do
     voter
     |> cast(attrs, [
       :name,
+      :nascimento,
       :endereco,
       :bairro,
+      :titulo,
       :sessao,
       :zona,
       :cidade,
@@ -45,16 +49,9 @@ defmodule App.Elections.Voter do
     ])
     |> validate_required([
       :name,
-      :endereco,
-      :bairro,
+      :titulo,
       :sessao,
       :zona,
-      :cidade,
-      :cpf,
-      :rg,
-      :telefone,
-      :cadsus,
-      :nm_mae,
       :leader_by_id
     ])
     |> validate_cpf(:cpf, message: "CPF inválido")

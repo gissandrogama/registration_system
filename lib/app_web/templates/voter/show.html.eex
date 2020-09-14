@@ -6,6 +6,10 @@
         </div>
         <div class="py-4 px-6">
             <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Data de nascimento</h1>
+                <p class="px-2 text-sm"><%= @voter.nascimento %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">Contato</h1>
                 <p class="px-2 text-sm"><%= @voter.telefone %></p>
             </div>
@@ -22,11 +26,15 @@
                 <p class="px-2 text-sm"><%= @voter.cidade %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Número título</h1>
+                <p class="px-2 text-sm"><%= @voter.titulo %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">Zona</h1>
                 <p class="px-2 text-sm"><%= @voter.zona %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
-                <h1 class="text-1xl font-semibold text-gray-800">Sessão</h1>
+                <h1 class="text-1xl font-semibold text-gray-800">Seção</h1>
                 <p class="px-2 text-sm"><%= @voter.sessao %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">

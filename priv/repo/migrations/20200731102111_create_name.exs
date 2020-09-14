@@ -4,10 +4,12 @@ defmodule App.Repo.Migrations.CreateLeaders do
   def change do
     create table(:leaders) do
       add :name, :string
+      add :nascimento, :string
       add :telefone, :string
       add :endereco, :string
       add :bairro, :string
       add :cidade, :string
+      add :titulo, :string
       add :zona, :string
       add :cecao, :string
       add :cpf, :string
