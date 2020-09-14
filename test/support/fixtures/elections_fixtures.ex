@@ -10,9 +10,13 @@ defmodule App.ElectionsFixtures do
   # params to create leaders
   def leader_name, do: "some name"
 
+  def leader_nascimento, do: "11/02/1991"
+
   def leader_bairro, do: "some bairro"
 
   def leader_cidade, do: "some cidade"
+
+  def leader_titulo, do: "304015431317"
 
   def leader_cecao, do: "some sessao"
 
@@ -37,8 +41,10 @@ defmodule App.ElectionsFixtures do
       attrs
       |> Enum.into(%{
         name: leader_name(),
+        nascimento: leader_nascimento(),
         bairro: leader_bairro(),
         cidade: leader_cidade(),
+        titulo: leader_titulo(),
         cecao: leader_cecao(),
         zona: leader_zona(),
         cpf: leader_cpf(),
@@ -57,9 +63,13 @@ defmodule App.ElectionsFixtures do
   # params to create voters
   def voter_name, do: "some name"
 
+  def voter_nascimento, do: "05/09/1985"
+
   def voter_bairro, do: "some bairro"
 
   def voter_cidade, do: "some cidade"
+
+  def voter_titulo, do: "541150731317"
 
   def voter_sessao, do: "some sessao"
 
@@ -84,8 +94,10 @@ defmodule App.ElectionsFixtures do
       attrs
       |> Enum.into(%{
         name: voter_name(),
+        nascimento: voter_nascimento(),
         bairro: voter_bairro(),
         cidade: voter_cidade(),
+        titulo: voter_titulo(),
         sessao: voter_sessao(),
         zona: voter_zona(),
         cpf: voter_cpf(),

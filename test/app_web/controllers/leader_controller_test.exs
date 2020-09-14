@@ -8,8 +8,10 @@ defmodule AppWeb.LeaderControllerTest do
 
   @create_attrs %{
     name: "some name",
+    nascimento: "02/09/1985",
     bairro: "some bairro",
     cadsus: "some cadsus",
+    titulo: "366678241384",
     cecao: "some cecao",
     cidade: "some cidade",
     cpf: Brcpfcnpj.cpf_generate(),
@@ -50,8 +52,10 @@ defmodule AppWeb.LeaderControllerTest do
     {:ok, leader} =
       Elections.create_leader(%{
         name: "some name",
+        nascimento: "02/09/1987",
         bairro: "some bairro",
         cadsus: "some cadsus",
+        titulo: "576145261325",
         cecao: "some cecao",
         cidade: "some cidade",
         cpf: Brcpfcnpj.cpf_generate(),

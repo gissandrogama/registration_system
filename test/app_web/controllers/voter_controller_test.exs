@@ -8,8 +8,10 @@ defmodule AppWeb.VoterControllerTest do
 
   @update_attrs %{
     name: "some updated name",
+    nascimento: "02/09/1987",
     endereco: "some updated endereco",
     bairro: "some updated bairro",
+    titulo: "388212351376",
     sessao: "some updated sessao",
     zona: "some updated zona",
     cidade: "some updated cidade",
@@ -21,8 +23,10 @@ defmodule AppWeb.VoterControllerTest do
   }
   @invalid_attrs %{
     name: nil,
+    nascimento: nil,
     endereco: nil,
     bairro: nil,
+    titulo: nil,
     sessao: nil,
     zona: nil,
     cidade: nil,
@@ -38,8 +42,10 @@ defmodule AppWeb.VoterControllerTest do
     {:ok, voter} =
       Elections.create_voter(%{
         name: "some name",
+        nascimento: "02/09/1987",
         endereco: "some endereco",
         bairro: "some bairro",
+        titulo: "236253431333",
         sessao: "some sessao",
         zona: "some zona",
         cidade: "some cidade",
@@ -82,8 +88,10 @@ defmodule AppWeb.VoterControllerTest do
         post(conn, Routes.voter_path(conn, :create),
           voter: %{
             name: "some name",
+            nascimento: "02/09/1987",
             endereco: "some endereco",
             bairro: "some bairro",
+            titulo: "388212351376",
             sessao: "some sessao",
             zona: "some zona",
             cidade: "some cidade",

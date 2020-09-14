@@ -56,8 +56,10 @@ defmodule App.ElectionsTest do
       assert {:ok, %Leader{} = leader} =
                Elections.create_leader(%{
                  name: "some name",
+                 nascimento: "02/09/1987",
                  bairro: "some bairro",
                  cadsus: "some cadsus",
+                 titulo: "557584151392",
                  cecao: "some sessao",
                  cidade: "some cidade",
                  cpf: Brcpfcnpj.cpf_generate(),
@@ -70,6 +72,7 @@ defmodule App.ElectionsTest do
                })
 
       assert leader.name == "some name"
+      assert leader.nascimento == "02/09/1987"
       assert leader.bairro == "some bairro"
       assert leader.cadsus == "some cadsus"
       assert leader.cecao == "some sessao"
@@ -79,6 +82,7 @@ defmodule App.ElectionsTest do
       assert leader.nm_mae == "some nm_mae"
       assert leader.rg == "some rg"
       assert leader.telefone == "some telefone"
+      assert leader.titulo == "557584151392"
       assert leader.zona == "some zona"
       assert leader.adm_by_id == adm.id
     end
@@ -91,6 +95,7 @@ defmodule App.ElectionsTest do
       leader = leader_fixture()
       assert {:ok, %Leader{} = leader} = Elections.update_leader(leader, @update_attrs)
       assert leader.name == "some updated name"
+      assert leader.nascimento == leader.nascimento
       assert leader.bairro == "some updated bairro"
       assert leader.cadsus == "some updated cadsus"
       assert leader.cecao == "some updated sessao"
@@ -101,6 +106,7 @@ defmodule App.ElectionsTest do
       assert leader.rg == "some updated rg"
       assert leader.telefone == "some updated telefone"
       assert leader.zona == "some updated zona"
+      assert leader.titulo == leader.titulo
     end
 
     test "update_leader/2 with invalid data returns error changeset" do
@@ -170,8 +176,10 @@ defmodule App.ElectionsTest do
       assert {:ok, %Voter{} = voter} =
                Elections.create_voter(%{
                  name: "some name",
+                 nascimento: "02/09/1987",
                  bairro: "some bairro",
                  cidade: "some cidade",
+                 titulo: "302308481325",
                  sessao: "some sessao",
                  zona: "some zona",
                  cpf: Brcpfcnpj.cpf_generate(),
@@ -183,6 +191,8 @@ defmodule App.ElectionsTest do
                  leader_by_id: leader.id
                })
 
+      assert voter.nascimento == "02/09/1987"
+      assert voter.titulo == "302308481325"
       assert voter.bairro == "some bairro"
       assert voter.cadsus == "some cadsus"
       assert voter.cidade == "some cidade"
