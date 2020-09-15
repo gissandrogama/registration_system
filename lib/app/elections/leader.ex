@@ -59,5 +59,13 @@ defmodule App.Elections.Leader do
     |> unsafe_validate_unique(:rg, App.Repo)
     |> unique_constraint(:rg)
     |> foreign_key_constraint(:adm_by_id)
+    |> validate_cell()
+  end
+
+  def validate_cell(changeset) do
+    changeset
+    |> validate_required([:telefone])
+    |> validate_format(:telefone, ~r/\(\d{2}\)\d{5}-\d{4}/, message: "telefone inválido, formato correto (99)99999-9999")
+    |> validate_length(:telefone, max: 14)
   end
 end
