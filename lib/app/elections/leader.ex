@@ -66,6 +66,6 @@ defmodule App.Elections.Leader do
     changeset
     |> validate_required([:telefone])
     |> validate_format(:telefone, ~r/\(\d{2}\)\d{5}-\d{4}/, message: "telefone inválido, formato correto (99)99999-9999")
-    |> validate_length(:telefone, max: 14)
+    |> validate_length(:telefone, max: 14, message: "telefone deve ter no máximo 14 caracteres")
   end
 end
