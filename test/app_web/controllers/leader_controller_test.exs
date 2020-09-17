@@ -18,7 +18,7 @@ defmodule AppWeb.LeaderControllerTest do
     endereco: "some endereco",
     nm_mae: "some nm_mae",
     rg: "some rg",
-    telefone: "some telefone",
+    telefone: "(91)98277-2244",
     zona: "some zona"
   }
   @update_attrs %{
@@ -31,7 +31,7 @@ defmodule AppWeb.LeaderControllerTest do
     endereco: "some updated endereco",
     nm_mae: "some updated nm_mae",
     rg: "some updated rg",
-    telefone: "some updated telefone",
+    telefone: "(91)98277-2233",
     zona: "some updated zona"
   }
   @invalid_attrs %{
@@ -62,7 +62,7 @@ defmodule AppWeb.LeaderControllerTest do
         endereco: "some endereco",
         nm_mae: "some nm_mae",
         rg: "some rg",
-        telefone: "some telefone",
+        telefone: "(91)98277-2211",
         zona: "some zona",
         adm_by_id: adm_fixture().id
       })

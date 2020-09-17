@@ -25,7 +25,7 @@ defmodule App.ElectionsTest do
       endereco: "some updated endereco",
       nm_mae: "some updated nm_mae",
       rg: "some updated rg",
-      telefone: "some updated telefone",
+      telefone: "(91)98755-9944",
       zona: "some updated zona"
     }
     @invalid_attrs %{
@@ -66,7 +66,7 @@ defmodule App.ElectionsTest do
                  endereco: "some endereco",
                  nm_mae: "some nm_mae",
                  rg: "some rg",
-                 telefone: "some telefone",
+                 telefone: "(91)98599-7788",
                  zona: "some zona",
                  adm_by_id: adm.id
                })
@@ -81,7 +81,7 @@ defmodule App.ElectionsTest do
       assert leader.endereco == "some endereco"
       assert leader.nm_mae == "some nm_mae"
       assert leader.rg == "some rg"
-      assert leader.telefone == "some telefone"
+      assert leader.telefone == "(91)98599-7788"
       assert leader.titulo == "557584151392"
       assert leader.zona == "some zona"
       assert leader.adm_by_id == adm.id
@@ -104,7 +104,7 @@ defmodule App.ElectionsTest do
       assert leader.endereco == "some updated endereco"
       assert leader.nm_mae == "some updated nm_mae"
       assert leader.rg == "some updated rg"
-      assert leader.telefone == "some updated telefone"
+      assert leader.telefone == "(91)98755-9944"
       assert leader.zona == "some updated zona"
       assert leader.titulo == leader.titulo
     end
@@ -145,7 +145,7 @@ defmodule App.ElectionsTest do
       name: "some updated name",
       rg: "some updated rg",
       sessao: "some updated sessao",
-      telefone: "some updated telefone",
+      telefone: "(91)98155-4477",
       zona: "some updated zona"
     }
     @invalid_attrs %{
@@ -185,7 +185,7 @@ defmodule App.ElectionsTest do
                  cpf: Brcpfcnpj.cpf_generate(),
                  rg: "some rg",
                  endereco: "some endereço",
-                 telefone: "some telefone",
+                 telefone: "(91)98533-9977",
                  nm_mae: "some mãe",
                  cadsus: "some cadsus",
                  leader_by_id: leader.id
@@ -201,7 +201,7 @@ defmodule App.ElectionsTest do
       assert voter.name == "some name"
       assert voter.rg == "some rg"
       assert voter.sessao == "some sessao"
-      assert voter.telefone == "some telefone"
+      assert voter.telefone == "(91)98533-9977"
       assert voter.zona == "some zona"
       assert voter.leader_by_id == leader.id
     end
@@ -221,7 +221,7 @@ defmodule App.ElectionsTest do
       assert voter.name == "some updated name"
       assert voter.rg == "some updated rg"
       assert voter.sessao == "some updated sessao"
-      assert voter.telefone == "some updated telefone"
+      assert voter.telefone == "(91)98155-4477"
       assert voter.zona == "some updated zona"
     end
 

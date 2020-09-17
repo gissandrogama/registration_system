@@ -28,7 +28,7 @@ defmodule App.ElectionsFixtures do
 
   def leader_endereco, do: "some endereco"
 
-  def leader_telefone, do: "some telefone"
+  def leader_telefone, do: "(91)98877-1150"
 
   def leader_nm_mae, do: "some mãe"
 
@@ -81,7 +81,7 @@ defmodule App.ElectionsFixtures do
 
   def voter_endereco, do: "some endereco"
 
-  def voter_telefone, do: "some telefone"
+  def voter_telefone, do: "(91)99955-2233"
 
   def voter_nm_mae, do: "some mãe"
 
