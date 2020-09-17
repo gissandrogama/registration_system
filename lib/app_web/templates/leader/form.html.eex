@@ -24,7 +24,7 @@
 
   <div class="w-full md:w-full px-3 mb-6">
     <%= label f, :telefone, [class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"] %>
-    <%= text_input f, :telefone, [class: "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none", type: "tel"] %>
+    <%= telephone_input f, :telefone, [id: "cc", placeholder: "(99)99999-9999", pattern: "(\(2[0-9]\)5[0-9]\-4[0-9])", class: "masked appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"] %>
     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
       <%= error_tag f, :telefone %>
     </span>
