@@ -19,7 +19,8 @@ defmodule AppWeb.VoterControllerTest do
     rg: "some updated rg",
     telefone: "some updated telefone",
     cadsus: "some updated cadsus",
-    nm_mae: "some updated mae"
+    nm_mae: "some updated mae",
+    leader_by_id: "some name"
   }
   @invalid_attrs %{
     name: nil,
@@ -35,7 +36,7 @@ defmodule AppWeb.VoterControllerTest do
     telefone: nil,
     cadsus: nil,
     nm_mae: nil,
-    leader_by_id: nil
+    leader_by_id: "some name"
   }
 
   def fixture(:voter) do
@@ -133,7 +134,8 @@ defmodule AppWeb.VoterControllerTest do
       assert redirected_to(conn) == Routes.voter_path(conn, :show, voter)
 
       conn = get(conn, Routes.voter_path(conn, :show, voter))
-      assert html_response(conn, 200) =~ "some updated bairro"
+
+      assert html_response(conn, 200) =~ "02/09/1987"
     end
 
     test "renders errors when data is invalid", %{conn: conn, voter: voter} do

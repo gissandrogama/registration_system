@@ -28,6 +28,7 @@ defmodule AppWeb.VoterController do
 
       %{"option" => "líder", "query" => _} ->
         query = Elections.leaders_query(params)
+
         if query != [] do
           voters = Elections.leader_voter(query)
           render(conn, "index.html", voters: voters)
