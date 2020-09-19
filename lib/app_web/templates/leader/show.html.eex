@@ -1,10 +1,14 @@
 <!-- component -->
 <div class="flex items-center justify-center">
-<div class="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden my-4">
+    <div class="max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden my-4">
         <div class="flex items-center px-6 py-3 bg-gray-900">
             <h1 class="mx-3 text-white font-semibold text-lg"><%= @leader.name %></h1>
         </div>
         <div class="py-4 px-6">
+            <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Data de Nascimento</h1>
+                <p class="px-2 text-sm"><%= @leader.nascimento %></p>
+            </div>
             <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">Contato</h1>
                 <p class="px-2 text-sm"><%= @leader.telefone %></p>
@@ -22,11 +26,15 @@
                 <p class="px-2 text-sm"><%= @leader.cidade %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
+                <h1 class="text-1xl font-semibold text-gray-800">Número título</h1>
+                <p class="px-2 text-sm"><%= @leader.titulo %></p>
+            </div>
+            <div class="flex items-baseline mt-4 text-gray-700">
                 <h1 class="text-1xl font-semibold text-gray-800">Zona</h1>
                 <p class="px-2 text-sm"><%= @leader.zona %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
-                <h1 class="text-1xl font-semibold text-gray-800">Sessão</h1>
+                <h1 class="text-1xl font-semibold text-gray-800">Seção</h1>
                 <p class="px-2 text-sm"><%= @leader.cecao %></p>
             </div>
             <div class="flex items-baseline mt-4 text-gray-700">
@@ -45,8 +53,10 @@
                 <h1 class="text-1xl font-semibold text-gray-800">Nome da Mãe</h1>
                 <p class="px-2 text-sm"><%= @leader.nm_mae %></p>
             </div>
-      <span class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Editar", to: Routes.leader_path(@conn, :edit, @leader) %></span>
-      <span class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Voltar", to: Routes.leader_path(@conn, :index) %></span>
+            <span
+                class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Editar", to: Routes.leader_path(@conn, :edit, @leader) %></span>
+            <span
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><%= link "Voltar", to: Routes.leader_path(@conn, :index) %></span>
         </div>
     </div>
 </div>

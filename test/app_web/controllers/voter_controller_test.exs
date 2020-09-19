@@ -8,8 +8,10 @@ defmodule AppWeb.VoterControllerTest do
 
   @update_attrs %{
     name: "some updated name",
+    nascimento: "02/09/1987",
     endereco: "some updated endereco",
     bairro: "some updated bairro",
+    titulo: "388212351376",
     sessao: "some updated sessao",
     zona: "some updated zona",
     cidade: "some updated cidade",
@@ -17,12 +19,15 @@ defmodule AppWeb.VoterControllerTest do
     rg: "some updated rg",
     telefone: "some updated telefone",
     cadsus: "some updated cadsus",
-    nm_mae: "some updated mae"
+    nm_mae: "some updated mae",
+    leader_by_id: "some name"
   }
   @invalid_attrs %{
     name: nil,
+    nascimento: nil,
     endereco: nil,
     bairro: nil,
+    titulo: nil,
     sessao: nil,
     zona: nil,
     cidade: nil,
@@ -31,15 +36,17 @@ defmodule AppWeb.VoterControllerTest do
     telefone: nil,
     cadsus: nil,
     nm_mae: nil,
-    leader_by_id: nil
+    leader_by_id: "some name"
   }
 
   def fixture(:voter) do
     {:ok, voter} =
       Elections.create_voter(%{
         name: "some name",
+        nascimento: "02/09/1987",
         endereco: "some endereco",
         bairro: "some bairro",
+        titulo: "236253431333",
         sessao: "some sessao",
         zona: "some zona",
         cidade: "some cidade",
@@ -82,8 +89,10 @@ defmodule AppWeb.VoterControllerTest do
         post(conn, Routes.voter_path(conn, :create),
           voter: %{
             name: "some name",
+            nascimento: "02/09/1987",
             endereco: "some endereco",
             bairro: "some bairro",
+            titulo: "388212351376",
             sessao: "some sessao",
             zona: "some zona",
             cidade: "some cidade",
@@ -125,7 +134,8 @@ defmodule AppWeb.VoterControllerTest do
       assert redirected_to(conn) == Routes.voter_path(conn, :show, voter)
 
       conn = get(conn, Routes.voter_path(conn, :show, voter))
-      assert html_response(conn, 200) =~ "some updated bairro"
+
+      assert html_response(conn, 200) =~ "02/09/1987"
     end
 
     test "renders errors when data is invalid", %{conn: conn, voter: voter} do

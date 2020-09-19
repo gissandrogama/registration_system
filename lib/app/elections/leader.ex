@@ -10,8 +10,10 @@ defmodule App.Elections.Leader do
 
   schema "leaders" do
     field :name, :string
+    field :nascimento, :string
     field :bairro, :string
     field :cadsus, :string
+    field :titulo, :string
     field :cecao, :string
     field :cidade, :string
     field :cpf, :string
@@ -30,10 +32,12 @@ defmodule App.Elections.Leader do
     leader
     |> cast(attrs, [
       :name,
+      :nascimento,
       :telefone,
       :endereco,
       :bairro,
       :cidade,
+      :titulo,
       :zona,
       :cecao,
       :cpf,
@@ -44,16 +48,9 @@ defmodule App.Elections.Leader do
     ])
     |> validate_required([
       :name,
-      :telefone,
-      :endereco,
-      :bairro,
-      :cidade,
+      :titulo,
       :zona,
       :cecao,
-      :cpf,
-      :rg,
-      :cadsus,
-      :nm_mae,
       :adm_by_id
     ])
     |> validate_cpf(:cpf, message: "CPF inválido")
@@ -62,5 +59,15 @@ defmodule App.Elections.Leader do
     |> unsafe_validate_unique(:rg, App.Repo)
     |> unique_constraint(:rg)
     |> foreign_key_constraint(:adm_by_id)
+    |> validate_cell()
+  end
+
+  def validate_cell(changeset) do
+    changeset
+    |> validate_required([:telefone])
+    |> validate_format(:telefone, ~r/\(\d{2}\)\d{5}-\d{4}/,
+      message: "telefone inválido, formato correto (99)99999-9999"
+    )
+    |> validate_length(:telefone, max: 14, message: "telefone deve ter no máximo 14 caracteres")
   end
 end

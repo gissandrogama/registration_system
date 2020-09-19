@@ -28,8 +28,15 @@ defmodule AppWeb.VoterController do
 
       %{"option" => "líder", "query" => _} ->
         query = Elections.leaders_query(params)
-        voters = Elections.leader_voter(query)
-        render(conn, "index.html", voters: voters)
+
+        if query != [] do
+          voters = Elections.leader_voter(query)
+          render(conn, "index.html", voters: voters)
+        else
+          conn
+          |> put_flash(:error, "Líder não existe.")
+          |> redirect(to: Routes.voter_path(conn, :index))
+        end
 
       _ ->
         voters = Elections.list_voters(params)
@@ -86,10 +93,15 @@ defmodule AppWeb.VoterController do
 
   defp search_leader_id(params) do
     leader_name = params["leader_by_id"]
-    leader = Elections.leaders_query(%{"query" => leader_name})
-    [head | _tail] = leader
-    leader = head.id
-    leader
+
+    if String.match?(leader_name, ~r/\d/) == true do
+      leader_name
+    else
+      leader = Elections.leaders_query(%{"query" => leader_name})
+      [head | _tail] = leader
+      leader = head.id
+      leader
+    end
   end
 
   def delete(conn, %{"id" => id}) do

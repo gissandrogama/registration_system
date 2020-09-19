@@ -8,15 +8,17 @@ defmodule AppWeb.LeaderControllerTest do
 
   @create_attrs %{
     name: "some name",
+    nascimento: "02/09/1985",
     bairro: "some bairro",
     cadsus: "some cadsus",
+    titulo: "366678241384",
     cecao: "some cecao",
     cidade: "some cidade",
     cpf: Brcpfcnpj.cpf_generate(),
     endereco: "some endereco",
     nm_mae: "some nm_mae",
     rg: "some rg",
-    telefone: "some telefone",
+    telefone: "(91)98277-2244",
     zona: "some zona"
   }
   @update_attrs %{
@@ -29,7 +31,7 @@ defmodule AppWeb.LeaderControllerTest do
     endereco: "some updated endereco",
     nm_mae: "some updated nm_mae",
     rg: "some updated rg",
-    telefone: "some updated telefone",
+    telefone: "(91)98277-2233",
     zona: "some updated zona"
   }
   @invalid_attrs %{
@@ -50,15 +52,17 @@ defmodule AppWeb.LeaderControllerTest do
     {:ok, leader} =
       Elections.create_leader(%{
         name: "some name",
+        nascimento: "02/09/1987",
         bairro: "some bairro",
         cadsus: "some cadsus",
+        titulo: "576145261325",
         cecao: "some cecao",
         cidade: "some cidade",
         cpf: Brcpfcnpj.cpf_generate(),
         endereco: "some endereco",
         nm_mae: "some nm_mae",
         rg: "some rg",
-        telefone: "some telefone",
+        telefone: "(91)98277-2211",
         zona: "some zona",
         adm_by_id: adm_fixture().id
       })
