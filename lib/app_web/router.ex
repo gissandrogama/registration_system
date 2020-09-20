@@ -57,13 +57,13 @@ defmodule AppWeb.Router do
     post "/admins/reset_password", AdmResetPasswordController, :create
     get "/admins/reset_password/:token", AdmResetPasswordController, :edit
     put "/admins/reset_password/:token", AdmResetPasswordController, :update
+    get "/admins/register", AdmRegistrationController, :new
+    post "/admins/register", AdmRegistrationController, :create
   end
 
   scope "/", AppWeb do
     pipe_through [:browser, :require_authenticated_adm]
 
-    get "/admins/register", AdmRegistrationController, :new
-    post "/admins/register", AdmRegistrationController, :create
     get "/admins/settings", AdmSettingsController, :edit
     put "/admins/settings/update_password", AdmSettingsController, :update_password
     put "/admins/settings/update_email", AdmSettingsController, :update_email
