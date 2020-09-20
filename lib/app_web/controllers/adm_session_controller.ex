@@ -14,13 +14,13 @@ defmodule AppWeb.AdmSessionController do
     if adm = Accounts.get_adm_by_email_and_password(email, password) do
       AdmAuth.log_in_adm(conn, adm, adm_params)
     else
-      render(conn, "new.html", error_message: "Invalid e-mail or password")
+      render(conn, "new.html", error_message: "E-mail ou senha inválidos.")
     end
   end
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, "Logged out successfully.")
+    |> put_flash(:info, "Desconectado com sucesso.")
     |> AdmAuth.log_out_adm()
   end
 end
