@@ -19,7 +19,7 @@ defmodule AppWeb.AdmRegistrationController do
           )
 
         conn
-        |> put_flash(:info, "Adm created successfully.")
+        |> put_flash(:info, "Adm criado com sucesso.")
         |> redirect(to: "/leader")
 
       {:error, %Ecto.Changeset{} = changeset} ->
