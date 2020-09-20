@@ -62,7 +62,7 @@ defmodule AppWeb.AdmSessionControllerTest do
 
       response = html_response(conn, 200)
       assert response =~ ""
-      assert response =~ "Invalid e-mail or password"
+      assert response =~ "E-mail ou senha inválido."
     end
   end
 
@@ -71,14 +71,14 @@ defmodule AppWeb.AdmSessionControllerTest do
       conn = conn |> log_in_adm(adm) |> delete(Routes.adm_session_path(conn, :delete))
       assert redirected_to(conn) == "/"
       refute get_session(conn, :adm_token)
-      assert get_flash(conn, :info) =~ "Logged out successfully"
+      assert get_flash(conn, :info) =~ "Desconectado com sucesso."
     end
 
     test "succeeds even if the adm is not logged in", %{conn: conn} do
       conn = delete(conn, Routes.adm_session_path(conn, :delete))
       assert redirected_to(conn) == "/"
       refute get_session(conn, :adm_token)
-      assert get_flash(conn, :info) =~ "Logged out successfully"
+      assert get_flash(conn, :info) =~ "Desconectado com sucesso."
     end
   end
 end

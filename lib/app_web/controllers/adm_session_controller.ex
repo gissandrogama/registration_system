@@ -14,7 +14,7 @@ defmodule AppWeb.AdmSessionController do
     if adm = Accounts.get_adm_by_email_and_password(email, password) do
       AdmAuth.log_in_adm(conn, adm, adm_params)
     else
-      render(conn, "new.html", error_message: "E-mail ou senha inválidos.")
+      render(conn, "new.html", error_message: "E-mail ou senha inválido.")
     end
   end
 
