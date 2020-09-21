@@ -62,6 +62,8 @@ defmodule AppWeb.Router do
   scope "/", AppWeb do
     pipe_through [:browser, :require_authenticated_adm]
 
+    get "/admins/register", AdmRegistrationController, :new
+    post "/admins/register", AdmRegistrationController, :create
     get "/admins/settings", AdmSettingsController, :edit
     put "/admins/settings/update_password", AdmSettingsController, :update_password
     put "/admins/settings/update_email", AdmSettingsController, :update_email
@@ -73,8 +75,6 @@ defmodule AppWeb.Router do
   scope "/", AppWeb do
     pipe_through [:browser]
 
-    get "/admins/register", AdmRegistrationController, :new
-    post "/admins/register", AdmRegistrationController, :create
     delete "/admins/log_out", AdmSessionController, :delete
     get "/admins/confirm", AdmConfirmationController, :new
     post "/admins/confirm", AdmConfirmationController, :create
