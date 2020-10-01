@@ -35,16 +35,16 @@
         <tbody class="bg-white">
           <%= for leader <- @leaders do %>
           <tr>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.name %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.telefone %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.endereco %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.bairro %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cidade %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.name %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.telefone %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.endereco %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.bairro %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cidade %></td>
 
-            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+            <td class="px-4 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
               <span><%= link "Ver mais", to: Routes.leader_path(@conn, :show, leader), class: "text-indigo-600 hover:text-indigo-900" %></span>
               <span><%= link "Editar", to: Routes.leader_path(@conn, :edit, leader), class: "ml-4 text-indigo-600 hover:text-indigo-900" %></span>
-              <span><%= link "Excluir", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Are you sure?"], class: "ml-4 text-indigo-600 hover:text-indigo-900 cursor-pointer" %></span>
+              <span><%= link "Excluir", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Você tem certeza?"], class: "ml-4 text-indigo-600 hover:text-indigo-900 cursor-pointer" %></span>
             </td>
           </tr>
           <% end %>
