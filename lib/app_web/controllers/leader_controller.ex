@@ -4,9 +4,11 @@ defmodule AppWeb.LeaderController do
   alias App.Elections
   alias App.Elections.Leader
 
-  def index(conn, _params) do
-    leaders = Elections.list_leaders()
-    render(conn, "index.html", leaders: leaders)
+  def index(conn, params) do
+    # leaders = Elections.list_leaders()
+    page = Leader
+           |> App.Repo.paginate(params)
+    render(conn, "index.html", leaders: page.entries, page: page)
   end
 
   def new(conn, _params) do

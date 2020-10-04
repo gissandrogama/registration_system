@@ -1,6 +1,18 @@
 <div class="flex flex-col">
   <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
     <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+      <%= if @page.page_number > 1 do %>
+      <div class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <%= link "Prev Page", to: Routes.leader_path(@conn, :index, page: @page.page_number - 1) %>
+      </div>
+      <% end %>
+      <%= IO.inspect(@page.page_number) %>
+
+      <%= if @page.page_number < @page.total_pages do %>
+      <div class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <%= link "Next Page", to: Routes.leader_path(@conn, :index, page: @page.page_number + 1) %>
+      </div>
+      <% end %>
       <h1 class="text-2xl font-semibold text-gray-800">Lista de Líderes</h1>
 
       <table class="min-w-full">
@@ -52,6 +64,7 @@
       </table>
 
       <span><%= link "Cadastrar Líder", to: Routes.leader_path(@conn, :new), class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" %></span>
+
     </div>
   </div>
 </div>

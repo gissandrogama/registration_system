@@ -49,7 +49,9 @@ defmodule App.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:phx_gen_auth, "~> 0.4.0", only: [:dev], runtime: false},
-      {:brcpfcnpj, "~> 0.2.1"}
+      {:brcpfcnpj, "~> 0.2.1"},
+      {:scrivener_ecto, "~> 2.0"},
+      {:scrivener_html, "~> 1.0"}
     ]
   end
 
