@@ -16,7 +16,7 @@ defmodule App.ElectionsFixtures do
 
   def leader_cidade, do: "some cidade"
 
-  def leader_titulo, do: "304015431317"
+  def leader_titulo, do: Brcpfcnpj.cpf_generate()
 
   def leader_cecao, do: "some sessao"
 
@@ -69,7 +69,7 @@ defmodule App.ElectionsFixtures do
 
   def voter_cidade, do: "some cidade"
 
-  def voter_titulo, do: "541150731317"
+  def voter_titulo, do: Brcpfcnpj.cpf_generate()
 
   def voter_sessao, do: "some sessao"
 
