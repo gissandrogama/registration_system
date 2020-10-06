@@ -6,8 +6,10 @@ defmodule AppWeb.LeaderController do
 
   def index(conn, params) do
     # leaders = Elections.list_leaders()
-    page = Leader
-           |> App.Repo.paginate(params)
+    page =
+      Leader
+      |> App.Repo.paginate(params)
+
     render(conn, "index.html", leaders: page.entries, page: page)
   end
 
