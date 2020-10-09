@@ -51,7 +51,8 @@ defmodule App.MixProject do
       {:phx_gen_auth, "~> 0.4.0", only: [:dev], runtime: false},
       {:brcpfcnpj, "~> 0.2.1"},
       {:scrivener_ecto, "~> 2.0"},
-      {:scrivener_html, "~> 1.6"}
+      {:scrivener_html, "~> 1.6"},
+      {:scrivener_list, "~> 2.0"}
     ]
   end
 

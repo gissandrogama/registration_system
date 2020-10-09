@@ -173,21 +173,24 @@ defmodule App.Elections do
   def list_for_bairro(params) do
     search_term = get_in(params, ["query"])
     search_term = "%#{search_term}%"
-    query = from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%")
+
+    query =
+      from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%"), order_by: [asc: :name]
+
     Repo.all(query)
   end
 
   @spec list_for_sessao(any) :: any
   def list_for_sessao(params) do
     search_term = get_in(params, ["query"])
-    query = from voter in Voter, where: voter.sessao == ^search_term
+    query = from voter in Voter, where: voter.sessao == ^search_term, order_by: [desc: voter.name]
     Repo.all(query)
   end
 
   @spec list_for_zona(any) :: any
   def list_for_zona(params) do
     search_term = get_in(params, ["query"])
-    query = from voter in Voter, where: voter.zona == ^search_term
+    query = from voter in Voter, where: voter.zona == ^search_term, order_by: [asc: voter.name]
     Repo.all(query)
   end
 

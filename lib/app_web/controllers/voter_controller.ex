@@ -7,8 +7,9 @@ defmodule AppWeb.VoterController do
   def index(conn, params) do
     case params do
       %{"option" => "bairro", "query" => _} ->
-        voters = Elections.list_for_bairro(params)
-        render(conn, "index.html", voters: voters)
+        list_voters = Elections.list_for_bairro(params)
+        page = App.Repo.paginate(list_voters, params)
+        render(conn, "index.html", voters: page.entries, page: page)
 
       %{"option" => "sessão", "query" => _} ->
         voters = Elections.list_for_sessao(params)
@@ -38,9 +39,10 @@ defmodule AppWeb.VoterController do
           |> redirect(to: Routes.voter_path(conn, :index))
         end
 
-      _ ->
-        voters = Elections.list_voters(params)
-        render(conn, "index.html", voters: voters)
+      %{} ->
+        list_voters = Elections.list_voters(params)
+        page = App.Repo.paginate(list_voters, params)
+        render(conn, "index.html", voters: page.entries, page: page)
     end
   end
 

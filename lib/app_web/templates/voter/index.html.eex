@@ -12,7 +12,40 @@
   <div class="flex flex-col">
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-        <h1 class="text-2xl font-semibold text-gray-800">Lista de Eleitores</h1>
+        <div class="flex justify-between">
+      <h1 class="text-2xl font-semibold text-gray-800">Lista de Eleitores</h1>
+      <div class="flex justify-end items-center">
+        <%= if @page.page_number === 1 do %>
+        <%= (Enum.count(@page.entries) - Enum.count(@page.entries)) + 1 %> -
+        <% else %>
+        <%= (@page.total_entries - Enum.count(@page.entries)) + 1 %> -
+        <% end %>
+
+        <%= if @page.page_number == @page.total_pages do  %>
+
+        <%= @page.total_entries %>
+
+        <% else %>
+        <%= Enum.count(@page.entries) %>
+        <% end %>
+
+        de <%= @page.total_entries %>
+
+        <div class="hover:text-gray-800 text-gray-600 font-bold py-2 px-4 rounded inline-flex items-center">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <%= link "Prev", to: Routes.voter_path(@conn, :index, page: @page.page_number - 1), class: "w-6 h-6" %>
+        </div>
+
+        <div class="hover:text-gray-800 text-gray-600 font-bold py-2 px-4 rounded inline-flex items-center">
+          <%= link "Next", to: Routes.voter_path(@conn, :index, page: @page.page_number + 1), class: "mr-3 w-6 h-6" %>
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+    </div>
 
         <table class="min-w-full">
           <thead>
