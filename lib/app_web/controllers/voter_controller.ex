@@ -5,6 +5,7 @@ defmodule AppWeb.VoterController do
   alias App.Elections.Voter
 
   def index(conn, params) do
+
     case params do
       %{"option" => "bairro", "query" => _} ->
         list_voters = Elections.list_for_bairro(params)
@@ -12,27 +13,32 @@ defmodule AppWeb.VoterController do
         render(conn, "index.html", voters: page.entries, page: page)
 
       %{"option" => "sessão", "query" => _} ->
-        voters = Elections.list_for_sessao(params)
-        render(conn, "index.html", voters: voters)
+        list_voters = Elections.list_for_sessao(params)
+        page = App.Repo.paginate(list_voters, params)
+        render(conn, "index.html", voters: page.entries, page: page)
 
       %{"option" => "zona", "query" => _} ->
-        voters = Elections.list_for_zona(params)
-        render(conn, "index.html", voters: voters)
+        list_voters = Elections.list_for_zona(params)
+        page = App.Repo.paginate(list_voters, params)
+        render(conn, "index.html", voters: page.entries, page: page)
 
       %{"option" => "cidade", "query" => _} ->
-        voters = Elections.list_for_city(params)
-        render(conn, "index.html", voters: voters)
+        list_voters = Elections.list_for_city(params)
+        page = App.Repo.paginate(list_voters, params)
+        render(conn, "index.html", voters: page.entries, page: page)
 
       %{"option" => "nome", "query" => _} ->
-        voters = Elections.list_for_name(params)
-        render(conn, "index.html", voters: voters)
+        list_voters = Elections.list_for_name(params)
+        page = App.Repo.paginate(list_voters, params)
+        render(conn, "index.html", voters: page.entries, page: page, params: params)
 
       %{"option" => "líder", "query" => _} ->
         query = Elections.leaders_query(params)
 
         if query != [] do
-          voters = Elections.leader_voter(query)
-          render(conn, "index.html", voters: voters)
+          list_voters = Elections.leader_voter(query)
+          page = App.Repo.paginate(list_voters, params)
+          render(conn, "index.html", voters: page.entries, page: page)
         else
           conn
           |> put_flash(:error, "Líder não existe.")

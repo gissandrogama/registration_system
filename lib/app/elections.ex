@@ -175,7 +175,7 @@ defmodule App.Elections do
     search_term = "%#{search_term}%"
 
     query =
-      from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%"), order_by: [asc: :name]
+      from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%")
 
     Repo.all(query)
   end
