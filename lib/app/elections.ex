@@ -174,8 +174,7 @@ defmodule App.Elections do
     search_term = get_in(params, ["query"])
     search_term = "%#{search_term}%"
 
-    query =
-      from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%")
+    query = from voter in Voter, where: ilike(voter.bairro, ^"%#{search_term}%")
 
     Repo.all(query)
   end

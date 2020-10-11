@@ -5,7 +5,6 @@ defmodule AppWeb.VoterController do
   alias App.Elections.Voter
 
   def index(conn, params) do
-
     case params do
       %{"option" => "bairro", "query" => _} ->
         list_voters = Elections.list_for_bairro(params)
