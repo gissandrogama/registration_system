@@ -75,7 +75,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :index))
 
       assert html_response(conn, 200) =~
-               "\n\n    <div class=\"flex justify-between\">\n      <h1 class=\"text-2xl font-semibold text-gray-800\">Lista de Líderes</h1>\n      <div class=\"flex justify-end items-center\">\n        1 -\n\n\n0\n\n        de 0\n\n        <div class=\"hover:text-gray-800 text-gray-600 font-bold py-2 px-4 rounded inline-flex items-center\">\n          <svg class=\"w-6 h-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 19l-7-7 7-7\" />\n          </svg>\n<a class=\"w-6 h-6\" href=\"/leader?page=0\">Prev</a>        </div>\n\n        <div class=\"hover:text-gray-800 text-gray-600 font-bold py-2 px-4 rounded inline-flex items-center\">\n<a class=\"mr-3 w-6 h-6\" href=\"/leader?page=2\">Next</a>          <svg class=\"w-6 h-6\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\" />\n          </svg>\n        </div>\n      </div>\n    </div>\n\n      "
+               "\n    <div class=\"align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200\">\n\n      <div class=\"flex justify-between\">\n        <h1 class=\"text-2xl font-semibold text-gray-800\">Lista de Líderes</h1>\n        <div class=\"flex justify-end items-center\">\n\n0\n\n\n          de 0\n\n\n        </div>\n      </div>\n\n      "
     end
   end
 
