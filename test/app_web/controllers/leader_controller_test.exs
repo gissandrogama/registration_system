@@ -75,7 +75,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :index))
 
       assert html_response(conn, 200) =~
-               "\n    <div class=\"align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200\">\n\n      <div class=\"flex justify-between\">\n        <h1 class=\"text-2xl font-semibold text-gray-800\">Lista de Líderes</h1>\n        <div class=\"flex justify-end items-center\">\n\n0\n\n\n          de 0\n\n\n        </div>\n      </div>\n\n      "
+               "<div class=\"-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8\">\n    <div class=\"align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200\">\n      <h1 class=\"text-2xl font-semibold text-gray-800\">Lista de Líderes</h1>\n      <table class=\"min-w-full\">\n        "
     end
   end
 
