@@ -58,6 +58,8 @@ defmodule App.Elections.Leader do
     |> unique_constraint(:cpf)
     |> unsafe_validate_unique(:rg, App.Repo)
     |> unique_constraint(:rg)
+    |> unsafe_validate_unique(:titulo, App.Repo)
+    |> unique_constraint(:titulo)
     |> foreign_key_constraint(:adm_by_id)
     |> validate_cell()
   end

@@ -1,7 +1,42 @@
 <div class="flex flex-col">
   <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
     <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
-      <h1 class="text-2xl font-semibold text-gray-800">Lista de Líderes</h1>
+
+      <div class="flex justify-between">
+        <h1 class="text-2xl font-semibold text-gray-800">Lista de Líderes</h1>
+        <div class="flex justify-end items-center">
+          <%= if @page.page_number == @page.total_pages do  %>
+
+          <%= @page.total_entries %>
+
+          <% else %>
+          <%= Enum.count(@page.entries) * @page.page_number%>
+          <% end %>
+
+
+          de <%= @page.total_entries %>
+
+           <%= if @page.page_number > 1 do %>
+          <div class="hover:text-gray-800 text-gray-600 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <%= link "Prev", to: Routes.leader_path(@conn, :index, page: @page.page_number - 1), class: "w-6 h-6" %>
+          </div>
+          <% end %>
+
+          <%= if @page.page_number < @page.total_pages do %>
+          <div class="hover:text-gray-800 text-gray-600 font-bold py-2 px-4 rounded inline-flex items-center">
+            <%= link "Next", to: Routes.leader_path(@conn, :index, page: @page.page_number + 1), class: "mr-3 w-6 h-6" %>
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+          <% end %>
+        </div>
+      </div>
 
       <table class="min-w-full">
         <thead>
@@ -35,16 +70,16 @@
         <tbody class="bg-white">
           <%= for leader <- @leaders do %>
           <tr>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.name %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.telefone %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.endereco %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.bairro %></td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cidade %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.name %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.telefone %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.endereco %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.bairro %></td>
+            <td class="px-4 py-4 whitespace-no-wrap border-b border-gray-200"><%= leader.cidade %></td>
 
-            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+            <td class="px-4 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
               <span><%= link "Ver mais", to: Routes.leader_path(@conn, :show, leader), class: "text-indigo-600 hover:text-indigo-900" %></span>
               <span><%= link "Editar", to: Routes.leader_path(@conn, :edit, leader), class: "ml-4 text-indigo-600 hover:text-indigo-900" %></span>
-              <span><%= link "Excluir", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Are you sure?"], class: "ml-4 text-indigo-600 hover:text-indigo-900 cursor-pointer" %></span>
+              <span><%= link "Excluir", to: Routes.leader_path(@conn, :delete, leader), method: :delete, data: [confirm: "Você tem certeza?"], class: "ml-4 text-indigo-600 hover:text-indigo-900 cursor-pointer" %></span>
             </td>
           </tr>
           <% end %>
@@ -52,6 +87,7 @@
       </table>
 
       <span><%= link "Cadastrar Líder", to: Routes.leader_path(@conn, :new), class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" %></span>
+
     </div>
   </div>
 </div>

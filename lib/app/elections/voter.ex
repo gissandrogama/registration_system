@@ -59,6 +59,8 @@ defmodule App.Elections.Voter do
     |> unique_constraint(:cpf)
     |> unsafe_validate_unique(:rg, App.Repo)
     |> unique_constraint(:rg)
+    |> unsafe_validate_unique(:titulo, App.Repo)
+    |> unique_constraint(:titulo)
     |> foreign_key_constraint(:leader_by_id)
   end
 
