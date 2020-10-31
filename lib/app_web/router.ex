@@ -68,7 +68,12 @@ defmodule AppWeb.Router do
     put "/admins/settings/update_password", AdmSettingsController, :update_password
     put "/admins/settings/update_email", AdmSettingsController, :update_email
     get "/admins/settings/confirm_email/:token", AdmSettingsController, :confirm_email
-    resources "/voter", VoterController
+
+    resources "/voter", VoterController,
+      actions: [:index, :edit, :new, :show, :create, :update, :delete]
+
+    get "/fom", VoterController, only: [:voters]
+
     resources "/leader", LeaderController
   end
 

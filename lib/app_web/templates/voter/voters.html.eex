@@ -1,0 +1,5 @@
+  <ul class="nav pull-right">
+  <li>
+    <%= link "Export XLSX", to: Routes.voter_path(@conn, :voters), class: "btn btn-default" %>
+  </li>
+</ul>

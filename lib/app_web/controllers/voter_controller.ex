@@ -119,4 +119,13 @@ defmodule AppWeb.VoterController do
     |> put_flash(:info, "Eleitor excluído com sucesso.")
     |> redirect(to: Routes.voter_path(conn, :index))
   end
+
+  def voters(conn, params) do
+    v = Elections.list_voters(params)
+
+    conn
+    |> put_resp_content_type("text/xlsx")
+    |> put_resp_header("content-disposition", "attachment; filename=eleitores.xlsx")
+    |> render("eleitores.xlsx", %{voters: v})
+  end
 end
