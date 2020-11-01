@@ -3,7 +3,7 @@
 <%= render "form.html", Map.put(assigns, :action, Routes.leader_path(@conn, :create)) %>
 
 
-<div class="flex items-center w-10 h-10 hover:bg-gray-300 rounded-full">
+<div class="transition duration-500 ease-in-out flex items-center justify-center w-10 h-10 hover:bg-gray-300 rounded-full">
   <svg class="relative w-5 h-5 mr-1 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
   </svg>
