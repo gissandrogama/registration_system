@@ -120,12 +120,29 @@ defmodule AppWeb.VoterController do
     |> redirect(to: Routes.voter_path(conn, :index))
   end
 
-  def voters(conn, params) do
-    v = Elections.list_voters(params)
-
+  def export(conn, _) do
     conn
-    |> put_resp_content_type("text/xlsx")
-    |> put_resp_header("content-disposition", "attachment; filename=eleitores.xlsx")
-    |> render("eleitores.xlsx", %{voters: v})
+    |> put_resp_content_type("text/csv")
+    |> put_resp_header("content-disposition", "attachment; filename=\"download.csv\"")
+    |> send_resp(200, csv_content())
   end
+
+  defp csv_content do
+    __dados =
+      [['lider', 'nome', 'endereco', 'telefone', 'zona'], ['Frank', 'Gissandro', 'CJ Paar Al. Portel', '91999999', '072']]
+      |> CSV.encode()
+      |> Enum.to_list()
+      |> to_string
+  end
+
+  # def posts(conn, _params) do
+  # name = from v in "voters", select: v.name
+
+  # posts = Repo.all(name)
+
+  # conn
+  # |> put_resp_content_type("text/xlsx")
+  # |> put_resp_header("content-disposition", "attachment; filename=posts_report")
+  # |> render("report.xlsx", %{posts: posts})
+  # end
 end

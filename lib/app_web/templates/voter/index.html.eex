@@ -1,4 +1,4 @@
-
+<%= link "Download CSV", to: Routes.voter_path(@conn, :export) %>
 
   <%= form_for @conn, Routes.voter_path(@conn, :index), [method: :get, class: "w-full md:flex mb-5"], fn f -> %>
   <div class="sm:w-full md:w-1/4 lg:w-1/4 xl:w-1/4 mr-3">

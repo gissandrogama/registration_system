@@ -1,27 +1,26 @@
 defmodule AppWeb.VoterView do
   use AppWeb, :view
 
-  alias Elixlsx.{Workbook, Sheet}
+  alias Elixlsx.{Sheet, Workbook}
 
   @header [
     "Name"
   ]
-
-  def render(AppWeb.VoterView, "eleitores.xlsx", %{voters: voters}) do
-    report_generator(voters)
-    |> Elixlsx.write_to_memory("eleitores.xlsx")
+  def render("report.xlsx", %{posts: posts}) do
+    report_generator(posts)
+    |> Elixlsx.write_to_memory("report.xlsx")
     |> elem(1)
     |> elem(1)
   end
 
-  def report_generator(voters) do
-    rows = voters |> Enum.map(&row(&1))
-    %Workbook{sheets: [%Sheet{name: "Voters", rows: [@header] ++ rows}]}
+  def report_generator(posts) do
+    rows = posts |> Enum.map(&row(&1))
+    %Workbook{sheets: [%Sheet{name: "Posts", rows: [@header] ++ rows}]}
   end
 
-  def row(voters) do
+  def row(post) do
     [
-      voters.name
+      post.name
     ]
   end
 end
