@@ -3,6 +3,8 @@ defmodule AppWeb.VoterController do
 
   alias App.Elections
   alias App.Elections.Voter
+  import Ecto.Query, only: [from: 2]
+  alias App.Repo
 
   def index(conn, params) do
     case params do
@@ -121,28 +123,28 @@ defmodule AppWeb.VoterController do
   end
 
   def export(conn, _) do
-    conn
-    |> put_resp_content_type("text/csv")
-    |> put_resp_header("content-disposition", "attachment; filename=\"download.csv\"")
-    |> send_resp(200, csv_content())
+    conn =
+      conn
+      |> put_resp_header("content-disposition", "attachment; filename=statistic_views.csv")
+      |> put_resp_content_type("text/csv")
+      |> send_chunked(200)
+
+    columns = ~w(id name endereco)
+
+    query = """
+      COPY (
+        SELECT  #{Enum.join(columns, ",")}
+        FROM voters
+    ) to STDOUT WITH CSV DELIMITER ',';
+    """
+
+    csv_header = [Enum.join(columns, ","), "\n"]
+
+    Repo.transaction(fn ->
+      Ecto.Adapters.SQL.stream(Repo, query)
+      |> Stream.map(&chunk(conn, &1.rows))
+      |> (fn stream -> Stream.concat(csv_header, stream) end).()
+      |> Stream.run()
+    end)
   end
-
-  defp csv_content do
-    __dados =
-      [['lider', 'nome', 'endereco', 'telefone', 'zona'], ['Frank', 'Gissandro', 'CJ Paar Al. Portel', '91999999', '072']]
-      |> CSV.encode()
-      |> Enum.to_list()
-      |> to_string
-  end
-
-  # def posts(conn, _params) do
-  # name = from v in "voters", select: v.name
-
-  # posts = Repo.all(name)
-
-  # conn
-  # |> put_resp_content_type("text/xlsx")
-  # |> put_resp_header("content-disposition", "attachment; filename=posts_report")
-  # |> render("report.xlsx", %{posts: posts})
-  # end
 end
