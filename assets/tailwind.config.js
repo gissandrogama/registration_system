@@ -7,6 +7,8 @@ module.exports = {
     "./js/**/*.js"
   ],
   theme: {},
-  variants: {},
+  variants: {
+    fontSize: ['responsive', 'hover', 'focus'],
+  },
   plugins: []
 };
