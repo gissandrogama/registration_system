@@ -207,6 +207,38 @@ defmodule App.Elections do
   end
 
   @doc """
+  Returns date now.
+  """
+  def date_now do
+    today = DateTime.utc_now()
+
+    [today.hour - 3, today.minute, today.second, today.day, today.month, today.year]
+    |> Enum.join("_")
+  end
+
+  @doc """
+  Returns a stream of comma deliminated voters.
+  """
+  def stream_players_csv do
+    columns = ["id", "name", "endereco"]
+
+    select_query = "SELECT #{Enum.join(columns, ",")} FROM voters"
+
+    stream_query = """
+    COPY (
+      #{select_query}
+      ) to
+      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+    """
+
+    csv_header = [Enum.join(columns, ","), "\n"]
+
+    Ecto.Adapters.SQL.stream(Repo, stream_query)
+    |> Stream.map(& &1.rows)
+    |> (fn stream -> Stream.concat(csv_header, stream) end).()
+  end
+
+  @doc """
   Returns the list of voters.
 
   ## Examples

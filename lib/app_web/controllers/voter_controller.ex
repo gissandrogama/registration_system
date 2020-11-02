@@ -3,7 +3,6 @@ defmodule AppWeb.VoterController do
 
   alias App.Elections
   alias App.Elections.Voter
-  import Ecto.Query, only: [from: 2]
   alias App.Repo
 
   def index(conn, params) do
@@ -122,29 +121,30 @@ defmodule AppWeb.VoterController do
     |> redirect(to: Routes.voter_path(conn, :index))
   end
 
-  def export(conn, _) do
+  def export(conn, _params) do
     conn =
       conn
-      |> put_resp_header("content-disposition", "attachment; filename=statistic_views.csv")
       |> put_resp_content_type("text/csv")
-      |> send_chunked(200)
+      |> put_resp_header(
+        "content-disposition",
+        ~s[attachment; filename="eleitores_#{Elections.date_now()}.csv"]
+      )
+      |> send_chunked(:ok)
 
-    columns = ~w(id name endereco)
+    {:ok, conn} =
+      Repo.transaction(fn ->
+        Elections.stream_players_csv()
+        |> Enum.reduce_while(conn, fn data, conn ->
+          case chunk(conn, data) do
+            {:ok, conn} ->
+              {:cont, conn}
 
-    query = """
-      COPY (
-        SELECT  #{Enum.join(columns, ",")}
-        FROM voters
-    ) to STDOUT WITH CSV DELIMITER ',';
-    """
+            {:error, :closed} ->
+              {:halt, conn}
+          end
+        end)
+      end)
 
-    csv_header = [Enum.join(columns, ","), "\n"]
-
-    Repo.transaction(fn ->
-      Ecto.Adapters.SQL.stream(Repo, query)
-      |> Stream.map(&chunk(conn, &1.rows))
-      |> (fn stream -> Stream.concat(csv_header, stream) end).()
-      |> Stream.run()
-    end)
+    conn
   end
 end
