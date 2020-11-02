@@ -34,11 +34,9 @@ defmodule App.MixProject do
   defp deps do
     [
       {:bcrypt_elixir, "~> 2.0"},
-      {:csv, "~> 1.4.0"},
       {:phoenix, "~> 1.5.4"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
-      {:elixlsx, "~> 0.4.2"},
       {:postgrex, "~> 0.15.5"},
       {:phoenix_live_view, "~> 0.14.0"},
       {:phoenix_html, "~> 2.11"},
