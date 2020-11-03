@@ -221,22 +221,77 @@ defmodule App.Elections do
   Returns a stream of comma deliminated voters.
   """
   def export_data_csv(string) do
-    columns = ["id", "name", "endereco"]
+    columns_voters = [
+      "id",
+      "name",
+      "nascimento",
+      "endereco",
+      "bairro",
+      "titulo",
+      "sessao",
+      "zona",
+      "cidade",
+      "cpf",
+      "rg",
+      "telefone",
+      "cadsus",
+      "nm_mae",
+      "leader_by_id",
+      "inserted_at",
+      "updated_at"
+    ]
 
-    select_query = "SELECT #{Enum.join(columns, ",")} FROM #{string}"
+    colums_leaders = [
+      "id",
+      "name",
+      "nascimento",
+      "telefone",
+      "endereco",
+      "bairro",
+      "cidade",
+      "titulo",
+      "zona",
+      "cecao",
+      "cpf",
+      "rg",
+      "cadsus",
+      "nm_mae",
+      "adm_by_id",
+      "inserted_at",
+      "updated_at"
+    ]
 
-    stream_query = """
-    COPY (
-      #{select_query}
-      ) to
-      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
-    """
+    if string == "voters" do
+      csv_header = [Enum.join(columns_voters, ","), "\n"]
 
-    csv_header = [Enum.join(columns, ","), "\n"]
+      select_query = "SELECT #{Enum.join(columns_voters, ",")} FROM #{string}"
 
-    SQL.stream(Repo, stream_query)
-    |> Stream.map(& &1.rows)
-    |> (fn stream -> Stream.concat(csv_header, stream) end).()
+      stream_query = """
+      COPY (
+        #{select_query}
+        ) to
+        STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+      """
+
+      SQL.stream(Repo, stream_query)
+      |> Stream.map(& &1.rows)
+      |> (fn stream -> Stream.concat(csv_header, stream) end).()
+    else
+      csv_header = [Enum.join(colums_leaders, ","), "\n"]
+
+      select_query = "SELECT #{Enum.join(colums_leaders, ",")} FROM #{string}"
+
+      stream_query = """
+      COPY (
+        #{select_query}
+        ) to
+        STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+      """
+
+      SQL.stream(Repo, stream_query)
+      |> Stream.map(& &1.rows)
+      |> (fn stream -> Stream.concat(csv_header, stream) end).()
+    end
   end
 
   @doc """

@@ -126,7 +126,7 @@ defmodule AppWeb.VoterController do
     list = Tuple.to_list(value)
     a = List.delete_at(list, 0)
     string = to_string(a)
-    table = String.replace_prefix(string, "http://localhost:4000/", "")
+    table = String.replace_prefix(string, "https://pesquise-lideres.gigalixirapp.com/", "")
 
     conn =
       conn
