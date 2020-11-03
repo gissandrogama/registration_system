@@ -148,5 +148,5 @@ defmodule AppWeb.AdmAuth do
 
   defp maybe_store_return_to(conn), do: conn
 
-  defp signed_in_path(_conn), do: "/leader"
+  defp signed_in_path(_conn), do: "/leaders"
 end
