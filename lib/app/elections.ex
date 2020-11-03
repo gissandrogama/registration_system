@@ -8,6 +8,7 @@ defmodule App.Elections do
 
   alias App.Elections.Leader
   alias App.Elections.Voter
+  alias Ecto.Adapters.SQL
 
   @doc """
   Returns the list of leader.
@@ -204,6 +205,38 @@ defmodule App.Elections do
     search_term = get_in(params, ["query"])
     query = from voter in Voter, where: ilike(voter.name, ^"%#{search_term}%")
     Repo.all(query)
+  end
+
+  @doc """
+  Returns date now.
+  """
+  def date_now do
+    today = DateTime.utc_now()
+
+    [today.hour - 3, today.minute, today.second, today.day, today.month, today.year]
+    |> Enum.join("_")
+  end
+
+  @doc """
+  Returns a stream of comma deliminated voters.
+  """
+  def export_data_csv(string) do
+    columns = ["id", "name", "endereco"]
+
+    select_query = "SELECT #{Enum.join(columns, ",")} FROM #{string}"
+
+    stream_query = """
+    COPY (
+      #{select_query}
+      ) to
+      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+    """
+
+    csv_header = [Enum.join(columns, ","), "\n"]
+
+    SQL.stream(Repo, stream_query)
+    |> Stream.map(& &1.rows)
+    |> (fn stream -> Stream.concat(csv_header, stream) end).()
   end
 
   @doc """
