@@ -122,6 +122,12 @@ defmodule AppWeb.VoterController do
   end
 
   def export(conn, _params) do
+    value = List.keyfind(conn.req_headers, "referer", 0)
+    list = Tuple.to_list(value)
+    a = List.delete_at(list, 0)
+    string = to_string(a)
+    table = String.replace_prefix(string, "http://localhost:4000/", "")
+
     conn =
       conn
       |> put_resp_content_type("text/csv")
@@ -133,7 +139,7 @@ defmodule AppWeb.VoterController do
 
     {:ok, conn} =
       Repo.transaction(fn ->
-        Elections.stream_players_csv()
+        Elections.export_data_csv(table)
         |> Enum.reduce_while(conn, fn data, conn ->
           case chunk(conn, data) do
             {:ok, conn} ->

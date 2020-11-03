@@ -69,11 +69,11 @@ defmodule AppWeb.Router do
     put "/admins/settings/update_email", AdmSettingsController, :update_email
     get "/admins/settings/confirm_email/:token", AdmSettingsController, :confirm_email
 
-    resources "/voter", VoterController
+    resources "/voters", VoterController
 
     get "/download", VoterController, :export
 
-    resources "/leader", LeaderController
+    resources "/leaders", LeaderController
   end
 
   scope "/", AppWeb do

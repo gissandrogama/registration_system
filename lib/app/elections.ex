@@ -219,10 +219,10 @@ defmodule App.Elections do
   @doc """
   Returns a stream of comma deliminated voters.
   """
-  def stream_players_csv do
+  def export_data_csv(string) do
     columns = ["id", "name", "endereco"]
 
-    select_query = "SELECT #{Enum.join(columns, ",")} FROM voters"
+    select_query = "SELECT #{Enum.join(columns, ",")} FROM #{string}"
 
     stream_query = """
     COPY (
