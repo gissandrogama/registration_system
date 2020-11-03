@@ -18,7 +18,7 @@ defmodule AppWeb.AdmSessionControllerTest do
 
     test "redirects if already logged in", %{conn: conn, adm: adm} do
       conn = conn |> log_in_adm(adm) |> get(Routes.adm_session_path(conn, :new))
-      assert redirected_to(conn) == "/leader"
+      assert redirected_to(conn) == "/leaders"
     end
   end
 

@@ -19,7 +19,7 @@ defmodule AppWeb.AdmAuthTest do
       conn = AdmAuth.log_in_adm(conn, adm)
       assert token = get_session(conn, :adm_token)
       assert get_session(conn, :live_socket_id) == "admins_sessions:#{Base.url_encode64(token)}"
-      assert redirected_to(conn) == "/leader"
+      assert redirected_to(conn) == "/leaders"
       assert Accounts.get_adm_by_session_token(token)
     end
 
@@ -118,7 +118,7 @@ defmodule AppWeb.AdmAuthTest do
     test "redirects if adm is authenticated", %{conn: conn, adm: adm} do
       conn = conn |> assign(:current_adm, adm) |> AdmAuth.redirect_if_adm_is_authenticated([])
       assert conn.halted
-      assert redirected_to(conn) == "/leader"
+      assert redirected_to(conn) == "/leaders"
     end
 
     test "does not redirect if adm is not authenticated", %{conn: conn} do
