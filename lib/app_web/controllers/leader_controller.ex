@@ -88,16 +88,20 @@ defmodule AppWeb.LeaderController do
       Repo.transaction(fn ->
         Elections.export_data_csv(table)
         |> Enum.reduce_while(conn, fn data, conn ->
-          case chunk(conn, data) do
-            {:ok, conn} ->
-              {:cont, conn}
-
-            {:error, :closed} ->
-              {:halt, conn}
-          end
+          test(conn, data)
         end)
       end)
 
     conn
+  end
+
+  defp test(conn, data) do
+    case chunk(conn, data) do
+      {:ok, conn} ->
+        {:cont, conn}
+
+      {:error, :closed} ->
+        {:halt, conn}
+    end
   end
 end

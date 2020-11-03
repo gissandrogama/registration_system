@@ -8,6 +8,7 @@ defmodule App.Elections do
 
   alias App.Elections.Leader
   alias App.Elections.Voter
+  alias Ecto.Adapters.SQL
 
   @doc """
   Returns the list of leader.
@@ -233,7 +234,7 @@ defmodule App.Elections do
 
     csv_header = [Enum.join(columns, ","), "\n"]
 
-    Ecto.Adapters.SQL.stream(Repo, stream_query)
+    SQL.stream(Repo, stream_query)
     |> Stream.map(& &1.rows)
     |> (fn stream -> Stream.concat(csv_header, stream) end).()
   end
