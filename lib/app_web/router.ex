@@ -84,7 +84,6 @@ defmodule AppWeb.Router do
     post "/admins/confirm", AdmConfirmationController, :create
     get "/admins/confirm/:token", AdmConfirmationController, :confirm
 
-
     get "/download/1", VoterController, :export_leaders
     get "/download/2", VoterController, :export_voters
     get "/download/3", VoterController, :export_admins
