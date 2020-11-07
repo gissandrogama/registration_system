@@ -3,7 +3,6 @@ defmodule AppWeb.LeaderController do
 
   alias App.Elections
   alias App.Elections.Leader
-  alias App.Repo
 
   def index(conn, params) do
     # leaders = Elections.list_leaders()
@@ -66,42 +65,5 @@ defmodule AppWeb.LeaderController do
     conn
     |> put_flash(:info, "Líder excluído com sucesso.")
     |> redirect(to: Routes.leader_path(conn, :index))
-  end
-
-  def export(conn, _params) do
-    value = List.keyfind(conn.req_headers, "referer", 0)
-    list = Tuple.to_list(value)
-    a = List.delete_at(list, 0)
-    string = to_string(a)
-    table = String.replace_prefix(string, "http://localhost:4000/", "")
-
-    conn =
-      conn
-      |> put_resp_content_type("text/csv")
-      |> put_resp_header(
-        "content-disposition",
-        ~s[attachment; filename="lideres_#{Elections.date_now()}.csv"]
-      )
-      |> send_chunked(:ok)
-
-    {:ok, conn} =
-      Repo.transaction(fn ->
-        Elections.export_data_csv(table)
-        |> Enum.reduce_while(conn, fn data, conn ->
-          test(conn, data)
-        end)
-      end)
-
-    conn
-  end
-
-  defp test(conn, data) do
-    case chunk(conn, data) do
-      {:ok, conn} ->
-        {:cont, conn}
-
-      {:error, :closed} ->
-        {:halt, conn}
-    end
   end
 end
