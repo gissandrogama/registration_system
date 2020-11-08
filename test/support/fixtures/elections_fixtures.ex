@@ -18,7 +18,7 @@ defmodule App.ElectionsFixtures do
 
   def leader_titulo, do: Brcpfcnpj.cpf_generate()
 
-  def leader_cecao, do: "some sessao"
+  def leader_sessao, do: "some sessao"
 
   def leader_zona, do: "some zona"
 
@@ -45,7 +45,7 @@ defmodule App.ElectionsFixtures do
         bairro: leader_bairro(),
         cidade: leader_cidade(),
         titulo: leader_titulo(),
-        cecao: leader_cecao(),
+        sessao: leader_sessao(),
         zona: leader_zona(),
         cpf: leader_cpf(),
         rg: leader_rg(),

@@ -268,7 +268,7 @@ defmodule App.Elections do
       "cidade",
       "titulo",
       "zona",
-      "cecao",
+      "sessao",
       "cpf",
       "rg",
       "cadsus",

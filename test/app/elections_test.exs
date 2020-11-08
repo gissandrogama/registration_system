@@ -19,7 +19,7 @@ defmodule App.ElectionsTest do
       name: "some updated name",
       bairro: "some updated bairro",
       cadsus: "some updated cadsus",
-      cecao: "some updated sessao",
+      sessao: "some updated sessao",
       cidade: "some updated cidade",
       cpf: "30131772090",
       endereco: "some updated endereco",
@@ -31,7 +31,7 @@ defmodule App.ElectionsTest do
     @invalid_attrs %{
       bairro: nil,
       cadsus: nil,
-      cecao: nil,
+      sessao: nil,
       cidade: nil,
       cpf: nil,
       endereco: nil,
@@ -60,7 +60,7 @@ defmodule App.ElectionsTest do
                  bairro: "some bairro",
                  cadsus: "some cadsus",
                  titulo: "557584151392",
-                 cecao: "some sessao",
+                 sessao: "some sessao",
                  cidade: "some cidade",
                  cpf: Brcpfcnpj.cpf_generate(),
                  endereco: "some endereco",
@@ -75,7 +75,7 @@ defmodule App.ElectionsTest do
       assert leader.nascimento == "02/09/1987"
       assert leader.bairro == "some bairro"
       assert leader.cadsus == "some cadsus"
-      assert leader.cecao == "some sessao"
+      assert leader.sessao == "some sessao"
       assert leader.cidade == "some cidade"
       assert leader.cpf == leader.cpf
       assert leader.endereco == "some endereco"
@@ -98,7 +98,7 @@ defmodule App.ElectionsTest do
       assert leader.nascimento == leader.nascimento
       assert leader.bairro == "some updated bairro"
       assert leader.cadsus == "some updated cadsus"
-      assert leader.cecao == "some updated sessao"
+      assert leader.sessao == "some updated sessao"
       assert leader.cidade == "some updated cidade"
       assert leader.cpf == "30131772090"
       assert leader.endereco == "some updated endereco"

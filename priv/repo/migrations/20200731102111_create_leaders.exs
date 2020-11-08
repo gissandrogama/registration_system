@@ -11,7 +11,7 @@ defmodule App.Repo.Migrations.CreateLeaders do
       add :cidade, :string
       add :titulo, :string
       add :zona, :string
-      add :cecao, :string
+      add :sessao, :string
       add :cpf, :string
       add :rg, :string
       add :cadsus, :string

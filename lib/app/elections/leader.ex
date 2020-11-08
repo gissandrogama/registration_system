@@ -14,7 +14,7 @@ defmodule App.Elections.Leader do
     field :bairro, :string
     field :cadsus, :string
     field :titulo, :string
-    field :cecao, :string
+    field :sessao, :string
     field :cidade, :string
     field :cpf, :string
     field :endereco, :string
@@ -39,7 +39,7 @@ defmodule App.Elections.Leader do
       :cidade,
       :titulo,
       :zona,
-      :cecao,
+      :sessao,
       :cpf,
       :rg,
       :cadsus,
@@ -50,7 +50,7 @@ defmodule App.Elections.Leader do
       :name,
       :titulo,
       :zona,
-      :cecao,
+      :sessao,
       :adm_by_id
     ])
     |> validate_cpf(:cpf, message: "CPF inválido")
