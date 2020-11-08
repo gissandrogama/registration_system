@@ -121,13 +121,7 @@ defmodule AppWeb.VoterController do
     |> redirect(to: Routes.voter_path(conn, :index))
   end
 
-  def export(conn, _params) do
-    value = List.keyfind(conn.req_headers, "referer", 0)
-    list = Tuple.to_list(value)
-    a = List.delete_at(list, 0)
-    string = to_string(a)
-    table = String.replace_prefix(string, "https://pesquise-lideres.gigalixirapp.com/", "")
-
+  def export_voters(conn, _params) do
     conn =
       conn
       |> put_resp_content_type("text/csv")
@@ -139,7 +133,70 @@ defmodule AppWeb.VoterController do
 
     {:ok, conn} =
       Repo.transaction(fn ->
-        Elections.export_data_csv(table)
+        Elections.export_voters_csv()
+        |> Enum.reduce_while(conn, fn data, conn ->
+          test(conn, data)
+        end)
+      end)
+
+    conn
+  end
+
+  def export_leaders(conn, _params) do
+    conn =
+      conn
+      |> put_resp_content_type("text/csv")
+      |> put_resp_header(
+        "content-disposition",
+        ~s[attachment; filename="lideres_#{Elections.date_now()}.csv"]
+      )
+      |> send_chunked(:ok)
+
+    {:ok, conn} =
+      Repo.transaction(fn ->
+        Elections.export_leaders_csv()
+        |> Enum.reduce_while(conn, fn data, conn ->
+          test(conn, data)
+        end)
+      end)
+
+    conn
+  end
+
+  def export_admins(conn, _params) do
+    conn =
+      conn
+      |> put_resp_content_type("text/csv")
+      |> put_resp_header(
+        "content-disposition",
+        ~s[attachment; filename="admins_#{Elections.date_now()}.csv"]
+      )
+      |> send_chunked(:ok)
+
+    {:ok, conn} =
+      Repo.transaction(fn ->
+        Elections.export_admins_csv()
+        |> Enum.reduce_while(conn, fn data, conn ->
+          test(conn, data)
+        end)
+      end)
+
+    conn
+  end
+
+  def export_admins_tokens(conn, _params) do
+    conn =
+      conn
+      |> put_resp_content_type("text/csv")
+      |> put_resp_header(
+        "content-disposition",
+        ~s[attachment; filename="admins_tokens_#{Elections.date_now()}.csv"]
+      )
+      |> send_chunked(:ok)
+
+    {:ok, conn} =
+      Repo.transaction(fn ->
+        Elections.export_admins_token_csv()
         |> Enum.reduce_while(conn, fn data, conn ->
           test(conn, data)
         end)

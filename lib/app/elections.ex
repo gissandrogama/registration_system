@@ -220,7 +220,7 @@ defmodule App.Elections do
   @doc """
   Returns a stream of comma deliminated voters.
   """
-  def export_data_csv(string) do
+  def export_voters_csv do
     columns_voters = [
       "id",
       "name",
@@ -241,6 +241,23 @@ defmodule App.Elections do
       "updated_at"
     ]
 
+    csv_header = [Enum.join(columns_voters, ","), "\n"]
+
+    select_query = "SELECT #{Enum.join(columns_voters, ",")} FROM voters"
+
+    stream_query = """
+    COPY (
+      #{select_query}
+      ) to
+      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+    """
+
+    SQL.stream(Repo, stream_query)
+    |> Stream.map(& &1.rows)
+    |> (fn stream -> Stream.concat(csv_header, stream) end).()
+  end
+
+  def export_leaders_csv do
     colums_leaders = [
       "id",
       "name",
@@ -261,37 +278,73 @@ defmodule App.Elections do
       "updated_at"
     ]
 
-    if string == "voters" do
-      csv_header = [Enum.join(columns_voters, ","), "\n"]
+    csv_header = [Enum.join(colums_leaders, ","), "\n"]
 
-      select_query = "SELECT #{Enum.join(columns_voters, ",")} FROM #{string}"
+    select_query = "SELECT #{Enum.join(colums_leaders, ",")} FROM leaders"
 
-      stream_query = """
-      COPY (
-        #{select_query}
-        ) to
-        STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
-      """
+    stream_query = """
+    COPY (
+      #{select_query}
+      ) to
+      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+    """
 
-      SQL.stream(Repo, stream_query)
-      |> Stream.map(& &1.rows)
-      |> (fn stream -> Stream.concat(csv_header, stream) end).()
-    else
-      csv_header = [Enum.join(colums_leaders, ","), "\n"]
+    SQL.stream(Repo, stream_query)
+    |> Stream.map(& &1.rows)
+    |> (fn stream -> Stream.concat(csv_header, stream) end).()
+  end
 
-      select_query = "SELECT #{Enum.join(colums_leaders, ",")} FROM #{string}"
+  def export_admins_csv do
+    colums_adms = [
+      "id",
+      "name",
+      "email",
+      "hashed_password",
+      "confirmed_at",
+      "inserted_at",
+      "updated_at"
+    ]
 
-      stream_query = """
-      COPY (
-        #{select_query}
-        ) to
-        STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
-      """
+    csv_header = [Enum.join(colums_adms, ","), "\n"]
 
-      SQL.stream(Repo, stream_query)
-      |> Stream.map(& &1.rows)
-      |> (fn stream -> Stream.concat(csv_header, stream) end).()
-    end
+    select_query = "SELECT #{Enum.join(colums_adms, ",")} FROM admins"
+
+    stream_query = """
+    COPY (
+      #{select_query}
+      ) to
+      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+    """
+
+    SQL.stream(Repo, stream_query)
+    |> Stream.map(& &1.rows)
+    |> (fn stream -> Stream.concat(csv_header, stream) end).()
+  end
+
+  def export_admins_token_csv do
+    colums_adms = [
+      "id",
+      "adm_id",
+      "token",
+      "context",
+      "sent_to",
+      "inserted_at"
+    ]
+
+    csv_header = [Enum.join(colums_adms, ","), "\n"]
+
+    select_query = "SELECT #{Enum.join(colums_adms, ",")} FROM admins_tokens"
+
+    stream_query = """
+    COPY (
+      #{select_query}
+      ) to
+      STDOUT WITH CSV DELIMITER ',' ESCAPE '\"'
+    """
+
+    SQL.stream(Repo, stream_query)
+    |> Stream.map(& &1.rows)
+    |> (fn stream -> Stream.concat(csv_header, stream) end).()
   end
 
   @doc """
