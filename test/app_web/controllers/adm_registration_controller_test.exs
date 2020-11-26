@@ -14,7 +14,7 @@ defmodule AppWeb.AdmRegistrationControllerTest do
                "\n  <h1 class=\"text-4xl tracking-tight\">Registro de Administradores</h1>\n  "
 
       assert response =~
-               "<p class=\"text-blue-500\">\n    <a href=\"/admins/log_in\">Acessar</a> |\n<a href=\"/admins/reset_password\">Esqueceu sua senha?</a>  </p>\n"
+               "\n        <div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<div class=\"text-center mt-24\">\n  <h1 class=\"text-4xl tracking-tight\">Registro de Administradores</h1>\n  <p class=\"text-blue-500\">\n<a href=\"/admins/log_in\">Acessar</a> |\n<a href=\"/admins/reset_password\">Esqueceu sua senha?</a>\n  </p>\n</div>\n"
     end
   end
 

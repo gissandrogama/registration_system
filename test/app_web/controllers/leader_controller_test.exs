@@ -84,7 +84,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = get(conn, Routes.leader_path(conn, :new))
 
       assert html_response(conn, 200) =~
-               "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastar líder</h1>\n\n"
+               "<div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastar líder</h1>\n<"
     end
   end
 
@@ -105,7 +105,7 @@ defmodule AppWeb.LeaderControllerTest do
       conn = post(conn, Routes.leader_path(conn, :create), leader: @invalid_attrs)
 
       assert html_response(conn, 200) =~
-               "\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastar líder</h1>\n\n"
+               "<div class=\"px-4 py-6 sm:px-0\"><main role=\"main\" class=\"container mx-auto mb-8 px-4 max-w-6xl\">\n  <p class=\"alert alert-info\" role=\"alert\"></p>\n  <p class=\"alert alert-danger\" role=\"alert\"></p>\n<h1 class=\"text-2xl text-center font-semibold text-gray-800\">Cadastar líder</h1>\n<"
     end
   end
 
